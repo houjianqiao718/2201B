@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 函数参数有两种
+         * 形参--a, b, c
+         * 实参--调用函数实际传的参数
+         * es6允许给函数参数赋值初始值，把默认参数放在最后面
+         * 
+         * **/
+
+        // function fn (a, b, c) {
+        // }
+        // fn(1, 2, 3);
+
+
+        // 把默认参数放在最后面
+        // function add (a, b, c = 10) {
+        //     return a + b + c;
+        // }
+        // let result = add(1, 2);
+        // console.log(result);
+
+
+        function add (a, b, c = 10) {
+            return a + b + c;
+        }
+        let result = add(1, 2);
+        console.log(result);
+
+
+        // function add (a, b, c = 10) {
+        //     return a + b + c;
+        // }
+        // let result = add(1, 2);
+        // console.log(result);
+    </script>
+</body>
+
+</html>

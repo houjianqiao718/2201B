@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Promise：
+         * Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，
+         * ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
+         * 所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，
+         * Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。
+         * 
+         * 
+         * promise解决了什么问题？
+         *      promise的出现是为了解决回调地狱的问题，promise是一个异步操作
+         *      Promise是回调地狱的解决方案之一，我们使用Promise的语法来解决回调地狱的问题，使代码拥有可读性和可维护性，有时候前端为了能够拿到异步的数据，
+         *      使用了大量的回调函数，来获取将来异步执行成功之后的数据。从一定程度上来说，回调地狱能解决问题，但是有缺点，或者说不优雅，阅读性非常差，
+         *      而Promise就解决了这个问题。
+         * 代码的可读性问题：
+         *      让代码更加直观精简，让人更容易的去阅读代码，也方便代码bug的寻找。
+         * 信任问题：
+         *      回调函数不能保证什么时候去调用回调，以及使用什么方式去调用回调；而Promise一旦被确认成功或失败，就不能再被更改。Promise成功之后
+         *      仅调用一次resolve()，不会产生回调多次执行的问题。除非Promise再次调用。所以Promise很好地解决了第三方工具导致的回调多次执行的问题。
+         * **/
+
+        // 回调地狱
+        // ajax({
+        // url: "www",
+        //     method: "GET",
+        //     success: function () {
+        //         ajax({
+        //             url: "www",
+        //             method: "GET",
+        //             success: function () {
+        //                 ajax({
+        //                     url: "www",
+        //                     method: "GET",
+        //                     success: function () {
+        //                         ajax({
+        //                             url: "www",
+        //                             method: "GET",
+        //                             success: function () {
+        //                                 ajax({
+        //                                     url: "www",
+        //                                     method: "GET",
+        //                                     success: function () {
+
+        //                                     }
+        //                                 })
+        //                             }
+        //                         })
+        //                     }
+        //                 })
+        //             }
+        //         })
+        //     }
+        // })
+
+        // Promise
+        
+        
+        function fun (val){
+          return new Promise((resolve,reject)=>{
+            if (val) {
+              resolve('成功了！')
+            }else {
+              reject('失败了...')
+            }
+          })
+        }
+        fun(213).then((res) => {
+          console.log(res);
+        }).catch(res=>{
+          console.log(res);
+        })
+        
+    </script>
+</body>
+
+</html>

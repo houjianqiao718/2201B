@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        /***
+         * 什么是数组？
+         *      数组是用来存储一系列值的一个集合，而每个值在数组里面都有一个对应的索引，也可以叫做下标，索引是从0开始的，依次递增。
+         *      数组本质上就是一个有秩序的集合。数组的元素可以是任意类型，但一般我们设置一个新的数组时，都是保持该数组内元素的，类型一致。
+         *      数组具有长度，且长度可变。数组的长度length属性是一个内置属性，所有的数组都有length属性。
+         * 
+         * 什么是伪数组？
+         *      伪数组是一个对象object，具有数组的length属性，但是不能使用数组的方法，一般以下标作为属性。例如arguments，
+         *      还有dom中获取的节点对象列表也是一个伪数组。
+         * 数组可以使用数组的所有方法，但是伪数组不可以直接使用数组的方法，需要先将伪数组变为真数组才能使用数组的所有方法。
+         * 
+         * 常用的伪数组有：
+         *      arguments, 
+         *      document.getElementsByTagName
+         *      getElementsByClassName
+         *      这些方法获取的`NodeList`集合的对象都属于伪数组
+         * 
+         * 把伪数组转换为数组：
+         * 总结:
+         *      [].slice.call()与Array.prototype.slice.call()的区别就在于通过Array.prototype找效率更高。
+         *      通过[]去调用slice方法需要通过原型链去找slice方法。
+         * **/
+
+
+        // 1.for循环
+        // const divs = document.querySelectorAll('div');
+        // let arr = [];
+        // console.log(divs instanceof Array);  // false
+        // for (let i = 0; i < divs.length; i++) {
+        //     arr.push(divs[i]);
+        // }
+        // console.log(arr instanceof Array);  // true
+
+
+        // 2.[].slice.call()
+        // 第二种就是通过调用Array的slice的截取方法。
+        // const divs = document.querySelectorAll('div');
+        // console.log(divs instanceof Array);  // false
+        // const arr = [].slice.call(divs);
+        // console.log(arr instanceof Array);  // true
+
+
+        // 3.Array.prototype.slice.call()
+        // 第三种也是通过调用Array的slice的截取方法
+        // const divs = document.querySelectorAll('div');
+        // console.log(divs instanceof Array); // false
+        // const arr = Array.prototype.slice.call(divs);
+        // console.log(arr instanceof Array); // true
+
+
+        // 4.ES6 Array.form()
+        // 这种实现的方法就比较简单了，但有兼容性问题.
+        // const divs = document.querySelectorAll('div');
+        // console.log(divs instanceof Array); // false
+        // const arr = Array.from(divs);
+        // console.log(arr instanceof Array);  // true
+
+
+        // 5.ES6 扩展运算符 这种方法也有兼容性问题.
+        // const divs = document.querySelectorAll('div');
+        // console.log(divs instanceof Array);  // false
+        // const arr = [...divs];
+        // console.log(arr instanceof Array);  // true
+
+
+
+    </script>
+</body>
+
+</html>

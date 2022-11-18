@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * ES6引入了一种新的原始数据类型Symbol,表示独一无二的值。它是Javascript语言的第七种数据类型。
+         * ES5对象属性名都是字符串，这容易造成属性名的冲突。为了解决这个问题引入了Symbol类型来解决命名冲突的问题。
+         * Symbol值通过Symbol函数生成，也就是说，对象的属性名现在可以有两种形类型，一种是原来就有的字符串，另一种就是新增的Symbol类型。
+         * 
+         * 使用Symbol函数可以生成一个Symbol类型的值，但是不能在调用Symbol时使用new关键字，因为Symbol是基本数据类型，而不是对象。
+         * 使用Symbol()创建一个Symbol类型的值并赋值给a变量后，你就得到了一个在内存中独一无二的值。现在除了通过变量a，任何人在任何作用域内都无法重新创建出这个值。
+         * 
+         * **/
+        // let s = Symbol();
+        // let s1 = Symbol('张三');
+        // let s2 = Symbol('张三');
+        // let s3 = Symbol.for('张三')
+        // let s4 = Symbol.for('张三')
+        // console.log( s, s1, s2, s3, s4);  // Symbol() Symbol(张三) Symbol(张三) Symbol(张三) Symbol(张三)
+
+        // // Symbol不能和其他数据进行运算
+        // let result = s + 100;
+        // let result1 = s > 100;
+        // let result2 = s + s
+        // console.log( result, result1, result2 );  // Cannot convert a Symbol value to a number
+
+
+        // let s = Symbol();
+        // let s1 = Symbol('张三');
+        // let s2 = Symbol('张三');
+        // let s3 = Symbol.for('张三')
+        // let s4 = Symbol.for('张三')
+        // console.log( s, s1, s2, s3, s4);
+
+
+        // Symbol不能和其他数据进行运算
+        // let result = s + 100;
+        // let result1 = s > 100;
+        // let result2 = s + s
+        // console.log( result, result1, result2 ); 
+
+
+        // let s = Symbol();
+        // let s1 = Symbol('张三');
+        // let s2 = Symbol('张三');
+        // let s3 = Symbol.for('张三')
+        // let s4 = Symbol.for('张三')
+        // console.log( s, s1, s2, s3, s4);
+
+        
+        // Symbol不能和其他数据进行运算
+        // let result = s + 100;
+        // let result1 = s > 100;
+        // let result2 = s + s
+        // console.log( result, result1, result2 ); 
+
+
+    </script>
+</body>
+</html>

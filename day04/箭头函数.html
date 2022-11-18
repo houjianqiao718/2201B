@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /***
+         * 箭头函数没有this，他的this的动态的，
+         * 不能用作于构造函数
+         * 箭头函数不能使用arguments对象
+         * **/
+
+        // let fn = function() {}
+        // let fn1 = () =>{}
+
+        // function fn () {
+        //     console.log(this.name);  // 跑
+        // }
+        // let fn1 = () => {
+        //     console.log(this.name); // 跑
+        // }
+        // window.name = '跑';
+        // const OBJ = {
+        //     name: '老六'
+        // }
+        // fn();
+        // fn1()
+        // fn.call(OBJ) // 老六
+        // fn1.call(OBJ)  // 跑
+
+        // 不能作为构造实例化对象
+        // let Person = () =>{
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // let my = new Person('zhang', 19);
+        // console.log(my);
+
+
+
+
+
+        
+    </script>
+
+
+    <script>
+        // function fn () {
+        //     console.log(this.name);  // 跑
+        // }
+        // let fn1 = () => {
+        //     console.log(this.name); // 跑
+        // }
+        // window.name = '跑';
+        // const OBJ = {
+        //     name: '老六'
+        // }
+        // fn();
+        // fn1()
+        // fn.call(OBJ) // 老六
+        // fn1.call(OBJ)  // 跑
+    </script>
+
+
+    <script>
+        // function fn () {
+        //     console.log(this.name);  // 跑
+        // }
+        // let fn1 = () => {
+        //     console.log(this.name); // 跑
+        // }
+        // window.name = '跑';
+        // const OBJ = {
+        //     name: '老六'
+        // }
+        // fn();
+        // fn1()
+        // fn.call(OBJ) // 老六
+        // fn1.call(OBJ)  // 跑
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // js获取Dom节点常见的方法：元素节点，属性节点，文本节点
+        // getElementByTagName可以操作动态创建的Dom，而getElementById不可以
+
+        // 1、getElementById() — 通过 id 来获取元素的对象，返回值是一个对象
+        // function func() {
+        //     var selectId = document.getElementById("id名字");
+        //     selectId.style.color = "blue";
+        // }
+        // func();
+
+
+        // 2、getElementByClassName() — 通过 class 类名来获取的对象,返回值是一个数组
+        // function func() {
+        //     var selectClass = document.getElementByClassName("类名");
+        //     selectClass.style.color = "blue";
+        // }
+        // func();
+
+
+        // 3、getElementByTagName() — 通过标签来获取元素的对象, 返回值是一个数组
+        // function func() {
+        //     var selectTag = document.getElementByTagName("标签名");
+        //     selectTag.style.color = "blue";
+        // }
+        // func();
+
+
+        // 4、querySelector和queryselectorAll
+        /**
+         * querySelector
+         *     css 选择器，返回与该模式匹配的第一个元素，结果为一个元素；如果没找到匹配的元素，则返回 null
+         * querySelectorAll
+         *     css 选择器，返回与该模式匹配的所有元素，结果为一个类数组
+         * 
+         * ***/
+        // 4-1 querySelector() — 精准的获取某个元素
+        // function funb() {
+        //     var selectDiv = document.querySelector("#item");
+        //     selectDiv.style.color = "red";
+        //     // console.log(selectDiv)
+        // }
+        // funb()
+
+
+        // 4-2 queryselectorAll() — 获取符合类名或者标签名等条件的的所有元素
+        // function func() {
+        //     var selectDiv = document.querySelectorAll("li");
+        //     //此时selectDiv是一个数组，存放着li
+        //     selectDiv[0].style.color = "red";
+        //     //打印出为NodeList对象 -- 是节点的集合,可以使用 Array.from() 将其转换为数组
+        //     console.log(selectDiv)
+        // }
+        // func()
+
+
+        // 5、getElementByName — 通过name属性获取元素,返回值是一个数组，/一般使用在表单元素中
+        // function funa() {
+        //     var selectDiv = document.getElementsByName("status");
+        //     selectDiv[0].checked = true;
+        //     // 此时selectDiv是NodeList节点对象
+        //     // console.log(selectDiv)
+        // }
+        // funa()
+
+
+        // 6、document.title和document.body
+        // function fund() {
+        //     document.title = "这是title元素";
+        //     document.body.innerHTML = "<p style='color: red'>这是body元素</p>";
+        // }
+        // fund();
+    </script>
+
+
+    <script>
+
+        // 1、getElementById() — 通过 id 来获取元素的对象，返回值是一个对象
+        // function func() {
+        //     var selectId = document.getElementById("id名字");
+        //     selectId.style.color = "blue";
+        // }
+        // func();
+
+
+        // 2、getElementByClassName() — 通过 class 类名来获取的对象,返回值是一个数组
+        // function func() {
+        //     var selectClass = document.getElementByClassName("类名");
+        //     selectClass.style.color = "blue";
+        // }
+        // func();
+
+
+        // 3、getElementByTagName() — 通过标签来获取元素的对象, 返回值是一个数组
+        // function func() {
+        //     var selectTag = document.getElementByTagName("标签名");
+        //     selectTag.style.color = "blue";
+        // }
+        // func();
+
+
+        // 4、querySelector和queryselectorAll
+        // 4-1 querySelector() — 精准的获取某个元素
+        // function funb() {
+        //     var selectDiv = document.querySelector("#item");
+        //     selectDiv.style.color = "red";
+        //     // console.log(selectDiv)
+        // }
+        // funb()
+
+
+        // 4-2 queryselectorAll() — 获取符合类名或者标签名等条件的的所有元素
+        // function func() {
+        //     var selectDiv = document.querySelectorAll("li");
+        //     selectDiv[0].style.color = "red";
+        //     console.log(selectDiv)
+        // }
+        // func()
+
+
+        // 5、getElementByName — 通过name属性获取元素,返回值是一个数组，/一般使用在表单元素中
+        // function funa() {
+        //     var selectDiv = document.getElementsByName("status");
+        //     selectDiv[0].checked = true;
+        //     // 此时selectDiv是NodeList节点对象
+        //     // console.log(selectDiv)
+        // }
+        // funa()
+
+
+        // 6、document.title和document.body
+        // function fund() {
+        //     document.title = "这是title元素";
+        //     document.body.innerHTML = "<p style='color: red'>这是body元素</p>";
+        // }
+        // fund();
+    </script>
+
+
+    <script>
+
+        // 1、getElementById() — 通过 id 来获取元素的对象，返回值是一个对象
+        // function func() {
+        //     var selectId = document.getElementById("id名字");
+        //     selectId.style.color = "blue";
+        // }
+        // func();
+
+
+        // 2、getElementByClassName() — 通过 class 类名来获取的对象,返回值是一个数组
+        // function func() {
+        //     var selectClass = document.getElementByClassName("类名");
+        //     selectClass.style.color = "blue";
+        // }
+        // func();
+
+
+        // 3、getElementByTagName() — 通过标签来获取元素的对象, 返回值是一个数组
+        // function func() {
+        //     var selectTag = document.getElementByTagName("标签名");
+        //     selectTag.style.color = "blue";
+        // }
+        // func();
+
+
+        // 4、querySelector和queryselectorAll
+        // 4-1 querySelector() — 精准的获取某个元素
+        // function funb() {
+        //     var selectDiv = document.querySelector("#item");
+        //     selectDiv.style.color = "red";
+        //     // console.log(selectDiv)
+        // }
+        // funb()
+
+
+        // 4-2 queryselectorAll() — 获取符合类名或者标签名等条件的的所有元素
+        // function func() {
+        //     var selectDiv = document.querySelectorAll("li");
+        //     selectDiv[0].style.color = "red";
+        //     console.log(selectDiv)
+        // }
+        // func()
+
+
+        // 5、getElementByName — 通过name属性获取元素,返回值是一个数组，/一般使用在表单元素中
+        // function funa() {
+        //     var selectDiv = document.getElementsByName("status");
+        //     selectDiv[0].checked = true;
+        //     // 此时selectDiv是NodeList节点对象
+        //     // console.log(selectDiv)
+        // }
+        // funa()
+
+
+        // 6、document.title和document.body
+        // function fund() {
+        //     document.title = "这是title元素";
+        //     document.body.innerHTML = "<p style='color: red'>这是body元素</p>";
+        // }
+        // fund();
+    </script>
+
+</body>
+
+</html>
