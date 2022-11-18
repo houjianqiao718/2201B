@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、实例化promise函数
+        const p = new Promise((resolve, reject)=>{
+            // 2、通过new XMLHttpRequest实例化连接对象
+            const xhr = new XMLHttpRequest();
+            // 3、确定请求方式，以及请求的接口路径
+            xhr.open("GET", "https://api.apiopen.top/getJoke");
+            // 4、发送请求
+            xhr.send();
+            // 5、绑定事件，处理响应结果onreadystatechange、readyState
+            xhr.onreadystatechange = function() {
+                // 判断
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status <= 300) {
+                        // 表示成功
+                        resolve(xhr.response);
+                    } else {
+                        // 表示失败
+                        reject(xhr.status)
+                    }
+                }
+            }
+        })
+        // 6、promise函数调用
+        p.then(res => {
+            console.log(res);
+        },(err) =>{
+            console.log(err);
+        })
+    </script>
+
+    <script>
+        // // 1、实例化promise函数
+        // const p = new Promise((resolve, reject)=>{
+        //     // 2、通过new XMLHttpRequest实例化连接对象
+        //     const xhr = new XMLHttpRequest();
+        //     // 3、确定请求方式，以及请求的接口路径
+        //     xhr.open("GET", "https://api.apiopen.top/getJoke");
+        //     // 4、发送请求
+        //     xhr.send();
+        //     // 5、绑定事件，处理响应结果onreadystatechange、readyState
+        //     xhr.onreadystatechange = function() {
+        //         // 判断
+        //         if (xhr.readyState === 4) {
+        //             if (xhr.status >= 200 && xhr.status <= 300) {
+        //                 // 表示成功
+        //                 resolve(xhr.response);
+        //             } else {
+        //                 // 表示失败
+        //                 reject(xhr.status)
+        //             }
+        //         }
+        //     }
+        // })
+        // // 6、promise函数调用
+        // p.then(res => {
+        //     console.log(res);
+        // },(err) =>{
+        //     console.log(err);
+        // })
+    </script>
+
+    <script>
+        // // 1、实例化promise函数
+        // const p = new Promise((resolve, reject)=>{
+        //     // 2、通过new XMLHttpRequest实例化连接对象
+        //     const xhr = new XMLHttpRequest();
+        //     // 3、确定请求方式，以及请求的接口路径
+        //     xhr.open("GET", "https://api.apiopen.top/getJoke");
+        //     // 4、发送请求
+        //     xhr.send();
+        //     // 5、绑定事件，处理响应结果onreadystatechange、readyState
+        //     xhr.onreadystatechange = function() {
+        //         // 判断
+        //         if (xhr.readyState === 4) {
+        //             if (xhr.status >= 200 && xhr.status <= 300) {
+        //                 // 表示成功
+        //                 resolve(xhr.response);
+        //             } else {
+        //                 // 表示失败
+        //                 reject(xhr.status)
+        //             }
+        //         }
+        //     }
+        // })
+        // // 6、promise函数调用
+        // p.then(res => {
+        //     console.log(res);
+        // },(err) =>{
+        //     console.log(err);
+        // })
+    </script>
+</body>
+</html>
