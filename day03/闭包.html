@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 闭包
+        function fn(){
+            let name = '你好';
+            return function() {
+                console.log(name);
+            }
+        }
+        let func = fn();
+        func();
+
+
+        //上下文执行顺序
+        // let a = 'hello'
+        // console.log(a);
+        // function fn() {
+        //     console.log('你好');
+        //     setTimeout(()=>{
+        //         console.log('我是定时器');
+        //     },1000)
+        // }
+        // fn();
+        // console.log('123');
+
+    </script>
+
+</body>
+</html>
