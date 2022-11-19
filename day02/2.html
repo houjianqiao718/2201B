@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 字符串转数字
+        // let str = '123'
+        // let num = Number(str)
+        // console.log(num);
+
+        // let str1 = '16.6'
+        // let num1 = parseInt(str1)
+        // console.log(num1);
+
+        // let str2 = '123.63你好'
+        // let num2 = parseFloat(str2)
+        // console.log(num2);
+
+        // 字符串转换为数字，空字符串为0，任何非有效数字字符，结果都是NaN,只有纯数字才可以
+        // console.log( Number('') );  // 0
+        // console.log( Number('10') );  // 10
+        // console.log( Number('10em') );  //NaN
+        // console.log( Number(true) );  // 1
+        // console.log( Number(false) ); // 0
+        // console.log( Number(undefined) ); // NaN
+        // console.log( Number(null) );  // 0
+        // // let a = Symbol('132')
+        // // console.log( Number(a) );   // 报错
+        // console.log( Number(1n) ); // 1  es10的bigint会自动去除N，所以是1
+
+
+        // let arr = [666]
+        // console.log( Number(arr) );  // 666
+
+
+        // // 将数值或者对象转换为字符串
+        // console.log( String(1) );
+        // console.log( String(NaN) );
+        // console.log( String(null) );
+        // console.log( String(undefined) );
+        // console.log( String(symbol()) );
+        // console.log( toString({}) );
+
+        // console.log( 10 + '10' );
+        // console.log( 10 + new Date );
+        // console.log( 10 + [10] );
+
+        // let i = 10;
+        // console.log(i);
+        // i++
+        // console.log(i);
+        // ++i
+        // console.log(i);
+        // let i = 10;
+        // i = i + 1
+
+        // 例子1
+        // var i = 1;
+        // console.log(i); // 1
+
+        // var a = i++;
+        // console.log(i);  // 2
+        // console.log(a);  // 1
+
+        // 例子2
+        // var i = 1
+        // console.log(i);  // 1
+
+        // var a = ++i;
+        // console.log(i); // 2
+        // console.log(a); // 2
+
+        // typeof检测类型 -- 返回的是数据类型，可以检测基本数据类型
+        // let num = 123;
+        // let str = '123';
+        // let bool = false;
+        // let arr = [];
+        // let obj = {};
+        // let fun = function() {};
+        // let cla = class {};
+
+        // console.log( typeof num );  // number
+        // console.log( typeof str );  // string
+        // console.log( typeof bool );  // boolean
+        // console.log( typeof arr );  // object
+        // console.log( typeof obj );  // object
+        // console.log( typeof fun );   // function
+        // console.log( typeof cla );   // function
+        // console.log( typeof Array );  // function
+        // console.log( typeof Object );  // function
+        // console.log( typeof aaa );   // undefined
+        // console.log( typeof undefind );  // undefined
+        // console.log( typeof null );   // object
+        // console.log( typeof symbol );   // undefined
+
+        // instanceof检测类型 -- 返回值是布尔值
+        // let num = 123
+        // let str = '123';
+        // let bool = false;
+        // let arr = [];
+        // let obj = {};
+        // let fn = function() {};
+        // let cla = class {};
+        // let number = new Number(123)
+
+        // console.log( number instanceof Number );  // true
+        // console.log( num instanceof Number );  // false
+        // console.log( str instanceof String );  // false
+        // console.log( bool instanceof Boolean );  // false
+        // console.log( arr instanceof Array );  // true
+        // console.log( obj instanceof Object );  // true
+        // console.log( fn instanceof Function );  // true
+        // console.log( fn instanceof Object );  // true
+        // console.log( cla instanceof Function )  // true
+        // console.log( cla instanceof Object );  // true
+        // console.log( arr instanceof Object );  // true
+        // console.log( null instanceof Object );  // false
+        // console.log( undefined instanceof Object ); // false
+
+        // constructor检测类型--返回的是构造函数
+        // let num = 123
+        // let str = '123';
+        // let bool = false;
+        // let arr = [];
+        // let obj = {};
+        // let fn = function() {};
+        // let cla = class {};
+
+        // console.log( num.constructor );  // ƒ Number() { [native code] }
+        // console.log( str.constructor );  // ƒ String() { [native code] }
+        // console.log( bool.constructor );  // ƒ Boolean() { [native code] }
+        // console.log( arr.constructor );  // ƒ Array() { [native code] }
+        // console.log( obj.constructor );  // ƒ Object() { [native code] }
+        // console.log( fn.constructor );  // ƒ Function() { [native code] }
+        // console.log( cla.constructor );  // ƒ Function() { [native code] }
+        // function Demo(){};
+        // Demo.prototype = Array.prototype;
+        // let demo = new Demo();
+        // console.log( demo.constructor );  // ƒ Array() { [native code] }
+        // console.log( null.constructor );  //报错
+        // console.log( undefined.constructor );  //报错
+
+
+        // Object.prototype.toString.call()检测类型--是最全的一种方法，可以检测所有类型
+        // 返回的是数组的数据类型
+        // let num = 123
+        // let str = '123';
+        // let bool = false;
+        // let arr = [];
+        // let obj = {};
+        // let fn = function() {};
+        // let cla = class {};
+
+        // console.log( Object.prototype.toString.call(num) );  // [object Number]
+        // console.log( Object.prototype.toString.call(str) );  // [object String]
+        // console.log( Object.prototype.toString.call(bool) );  // [object Boolean]
+        // console.log( Object.prototype.toString.call(arr) );  // [object Array]
+        // console.log( Object.prototype.toString.call(obj) );  // [object Object]
+        // console.log( Object.prototype.toString.call(fn) );  // [object Function]
+        // console.log( Object.prototype.toString.call(cla) );  // [object Function]
+        // console.log( Object.prototype.toString.call(undefined) );  // [object Undefined]
+        // console.log( Object.prototype.toString.call(null) );  // [object Null]
+
+
+        // Object.getPrototypeOf()检测类型-- 这种是原型链的对比
+        // console.log( Object.getPrototypeOf([]) ) === Array.prototype;
+        // console.log( Object.getPrototypeOf({}) ) === Object.prototype;
+
+        // 3 > 4 ? '条件为真' : '条件为假'
+
+        // const data = undefined || []
+        // console.log(data);
+
+        // 字符串长度-length
+        // var str = '123456';
+        // console.log( str.length ); // 6
+
+        // 字符串截取--charAt 从0开始递增
+        // var str = '123456';
+        // var a = str.charAt(3);
+        // console.log(a);  // 4
+
+        // 字符串拼接-- concat和直接用＋
+        // var str = 'abc';
+        // var str1 = 'de';
+        // var a = str.concat(str1)
+        // console.log(a);
+        // var b = str + str1
+        // console.log(b);
+
+        // 字符串查找--indexOf，如果查找有的话就返回的是所在的下标，没有就是-1
+        // var str = '123456';
+        // console.log( str.indexOf('5') );  // 4
+        // console.log( str.indexOf('二') );  // -1
+
+        // 字符串替换--replace，第一个参数是旧的字符，第二个参数是新的字符
+        // var str = '一三三四五六';
+        // console.log( str.replace('二', '八') );  //133456
+
+        // var str1 = '一二三四五六';
+        // console.log( str1.replace('二', '八') );  // 183456
+
+        // 字符串转化字符串数组--split
+        // var str = '1一1一2二2二3三';
+        // console.log( str.split() );  // ['1一1一2二2二3三']
+        // console.log( str.split('') );  // ['1', '一', '1', '一', '2', '二', '2', '二', '3', '三']
+        // console.log( str.split('1') );  // ['', '一', '一2二2二3三']
+        // console.log( str.split('1', 2) ); // ['', '一']
+
+        // 字符串的截取--substr()
+        // var str = '1一1一2二2二3三';
+        // console.log( str.substr(1, 3) );  // 一1一
+
+    </script>
+
+</body>
+</html>

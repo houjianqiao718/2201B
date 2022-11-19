@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //typeof、instanceof、constructor、Object.prototype.toString.call()、Object.getPrototypeOf()
+        let num = 123
+        let str = '123';
+        let bool = false;
+        let arr = [];
+        let obj = {};
+        let fn = function() {};
+        let nu = null;
+
+        // console.log( typeof(num) );  //Number
+        // console.log( typeof(str) ); // string
+        // console.log( typeof(obj) );  // object
+
+
+        // console.log( num instanceof Number );  // false
+        // console.log( obj instanceof Object ); // true
+
+        // console.log( num.constructor );  // ƒ Number() { [native code] }
+        // console.log( str.constructor );  // ƒ String() { [native code] }
+        // console.log( nu.constructor );  // 报错
+
+        // console.log( Object.prototype.toString.call(num) ); // [object Number]
+        // console.log( Object.prototype.toString.call(obj) );  // [object Object]
+        // console.log( Object.prototype.toString.call(fn) );  // [object Function]
+
+        console.log( Object.getPrototypeOf([]) === Array.prototype );  // true
+        console.log( Object.getPrototypeOf({}) === Object.prototype );  //true
+
+    </script>
+</body>
+</html>
