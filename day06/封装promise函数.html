@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 写一个promise函数
+        function fun(val) {
+            return new Promise((resolve, reject) => {
+                if (val) {
+                    resolve('成功了！')
+                } else {
+                    reject('失败了...')
+                }
+            })
+        }
+        fun(213).then((res) => {
+            console.log(res);
+        }).catch(res => {
+            console.log(res);
+        })
+    </script>
+    
+    
+    <script>
+        // function fun(val) {
+        //     return new Promise((resolve, reject) => {
+        //         if (val) {
+        //             resolve('成功了！')
+        //         } else {
+        //             reject('失败了...')
+        //         }
+        //     })
+        // }
+        // fun(213).then((res) => {
+        //     console.log(res);
+        // }).catch(res => {
+        //     console.log(res);
+        // })
+    </script>
+
+
+    <script>
+        // function fun(val) {
+        //     return new Promise((resolve, reject) => {
+        //         if (val) {
+        //             resolve('成功了！')
+        //         } else {
+        //             reject('失败了...')
+        //         }
+        //     })
+        // }
+        // fun(213).then((res) => {
+        //     console.log(res);
+        // }).catch(res => {
+        //     console.log(res);
+        // })
+    </script>
+</body>
+
+</html>
