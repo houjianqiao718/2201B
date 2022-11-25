@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * class类的继承
+         *      Class 可以通过extends关键字实现继承，让子类继承父类的属性和方法。extends 的写法比 ES5 的原型链继承，要清晰和方便很多。
+         *      子类必须在constructor()方法中调用super()，否则就会报错
+         *      因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，
+         *          添加子类自己的实例属性和方法。如果不调用super()方法，子类就得不到自己的this对象。
+         *      在子类的构造函数中，只有调用super()之后，才可以使用this关键字，否则会报错。这是因为子类实例的构建，必须先完成父类的继承，
+         *          只有super()方法才能让子类实例继承父类。
+         *      子类 constructor 方法中必须有 super ，且必须出现在 this 之前。
+         * super 关键字
+         *      super这个关键字，既可以当作函数使用，也可以当作对象使用
+         *          super作为函数调用时，代表父类的构造函数。
+         *          ES6中子类的构造函数必须执行一次super函数。
+         *          super()只能用在子类的构造函数之中，用在其他地方就会报错。
+         *      super作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。 
+         * 
+         * 
+         * 总结：
+            1.extends就是class类实现继承的核心。
+            2.子类必须在constructor方法中调用super方法。
+            3.class里面第一行就是constructor，constructor第一行就是super。
+            4.super必须写在this前面，不然就会报错。 
+         **/
+
+        class Father {
+            constructor(name, age, hobbies) {
+                this.name = name,
+                this.age = age
+            }
+        }
+        var zsn = new Father("zsn", 20);
+        console.log(zsn); //  Father {name: "zsn", age: 20}
+
+        class Son extends Father {
+            constructor(name, age, hobbies) {
+                super(name, age); // 把父类构造函数的参数直接使用super关键字传递过来  然后再对子类独有的属性进行赋值
+                this.hobbies = hobbies
+            }
+        }
+        var wl = new Son("wl", 21, "跑步");
+        console.log(wl); // Son {name: "wl", age: 21, hobbies: "跑步"}
+    </script>
+
+    <script>
+        // class Father {
+        //     constructor(name, age, hobbies) {
+        //         this.name = name,
+        //             this.age = age
+        //     }
+        // }
+        // var zsn = new Father("zsn", 20);
+        // console.log(zsn); //  Father {name: "zsn", age: 20}
+
+        // class Son extends Father {
+        //     constructor(name, age, hobbies) {
+        //         super(name, age); // 把父类构造函数的参数直接使用super关键字传递过来  然后再对子类独有的属性进行赋值
+        //         this.hobbies = hobbies
+        //     }
+        // }
+        // var wl = new Son("wl", 21, "跑步");
+        // console.log(wl); // Son {name: "wl", age: 21, hobbies: "跑步"}
+    </script>
+
+    <script>
+        // class Father {
+        //     constructor(name, age, hobbies) {
+        //         this.name = name,
+        //             this.age = age
+        //     }
+        // }
+        // var zsn = new Father("zsn", 20);
+        // console.log(zsn); //  Father {name: "zsn", age: 20}
+
+        // class Son extends Father {
+        //     constructor(name, age, hobbies) {
+        //         super(name, age); // 把父类构造函数的参数直接使用super关键字传递过来  然后再对子类独有的属性进行赋值
+        //         this.hobbies = hobbies
+        //     }
+        // }
+        // var wl = new Son("wl", 21, "跑步");
+        // console.log(wl); // Son {name: "wl", age: 21, hobbies: "跑步"}
+    </script>
+</body>
+
+</html>

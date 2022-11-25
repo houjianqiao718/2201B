@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Tripple {
+            static tripple(n = 1) {
+                return n * 3;
+            }
+        }
+        class bigger extends Tripple {
+            static tripple(n) {
+                return super.tripple(n) * super.tripple(n);
+            }
+        }
+        console.log(Tripple.tripple());  // 3
+        console.log(Tripple.tripple(8));  // 24
+
+        let sup = new Tripple();
+
+        console.log(bigger.tripple(3));  // 81 不会受父类实例化的影响
+        console.log(sup.tripple()); // sup.tripple is not a function
+
+    </script>
+
+    <script>
+        // class Tripple {
+        //     static tripple(n = 1) {
+        //         return n * 3;
+        //     }
+        // }
+        // class bigger extends Tripple {
+        //     static tripple(n) {
+        //         return super.tripple(n) * super.tripple(n);
+        //     }
+        // }
+        // console.log(Tripple.tripple());  // 3
+        // console.log(Tripple.tripple(8));  // 24
+
+        // let sup = new Tripple();
+
+        // console.log(bigger.tripple(3));  // 81 不会受父类实例化的影响
+        // console.log(sup.tripple()); // sup.tripple is not a function
+
+    </script>
+
+    <script>
+        // class Tripple {
+        //     static tripple(n = 1) {
+        //         return n * 3;
+        //     }
+        // }
+        // class bigger extends Tripple {
+        //     static tripple(n) {
+        //         return super.tripple(n) * super.tripple(n);
+        //     }
+        // }
+        // console.log(Tripple.tripple());  // 3
+        // console.log(Tripple.tripple(8));  // 24
+
+        // let sup = new Tripple();
+
+        // console.log(bigger.tripple(3));  // 81 不会受父类实例化的影响
+        // console.log(sup.tripple()); // sup.tripple is not a function
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es5的写法
+        function Per(name, dream) {
+            this.name = name;
+            this.dream = dream;
+        }
+        Per.prototype.sing = function () {
+            console.log('我会唱歌');
+        }
+        Per.prototype.info = function () {
+            return '(我是' + this.name + ', 我的梦想是' + this.dream + ')'
+        }
+        var p = new Per('张三', '唱歌');
+        let res = p.info()
+        console.log(p);
+        console.log(p.info());
+
+
+        // es6的写法
+        class Pes {
+            constructor(name, dream) {
+                this.name = name;
+                this.dream = dream;
+            }
+            sing(){
+                console.log('我会跳舞');
+            }
+            info() {
+                return '(我是' + this.name + ', 我的梦想是' + this.dream + ')'
+            }
+        }
+        let p1 = new Pes('王五', '跳舞');
+        let result = p1.info();
+        console.log(p1);
+        console.log(p1.info());
+    </script>
+
+    <script>
+        // es5的写法
+        // function Per(name, dream) {
+        //     this.name = name;
+        //     this.dream = dream;
+        // }
+        // Per.prototype.sing = function () {
+        //     console.log('我会唱歌');
+        // }
+        // Per.prototype.info = function () {
+        //     return '(我是' + this.name + ', 我的梦想是' + this.dream + ')'
+        // }
+        // var p = new Per('张三', '唱歌');
+        // let res = p.info()
+        // console.log(p);
+        // console.log(p.info());
+
+
+        // es6的写法
+        // class Pes {
+        //     constructor(name, dream) {
+        //         this.name = name;
+        //         this.dream = dream;
+        //     }
+        //     sing(){
+        //         console.log('我会跳舞');
+        //     }
+        //     info() {
+        //         return '(我是' + this.name + ', 我的梦想是' + this.dream + ')'
+        //     }
+        // }
+        // let p1 = new Pes('王五', '跳舞');
+        // let result = p1.info();
+        // console.log(p1);
+        // console.log(p1.info());
+    </script>
+
+    <script>
+        // es5的写法
+        // function Per(name, dream) {
+        //     this.name = name;
+        //     this.dream = dream;
+        // }
+        // Per.prototype.sing = function () {
+        //     console.log('我会唱歌');
+        // }
+        // Per.prototype.info = function () {
+        //     return '(我是' + this.name + ', 我的梦想是' + this.dream + ')'
+        // }
+        // var p = new Per('张三', '唱歌');
+        // let res = p.info()
+        // console.log(p);
+        // console.log(p.info());
+
+
+        // es6的写法
+        // class Pes {
+        //     constructor(name, dream) {
+        //         this.name = name;
+        //         this.dream = dream;
+        //     }
+        //     sing(){
+        //         console.log('我会跳舞');
+        //     }
+        //     info() {
+        //         return '(我是' + this.name + ', 我的梦想是' + this.dream + ')'
+        //     }
+        // }
+        // let p1 = new Pes('王五', '跳舞');
+        // let result = p1.info();
+        // console.log(p1);
+        // console.log(p1.info());
+    </script>
+</body>
+
+</html>

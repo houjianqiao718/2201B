@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Phone (a, b) {
+            this.a = a;
+            this.b = b;
+        }
+        Phone.prototype.call = function() {
+            console.log('打电话');
+        }
+
+        function See ( a, b, c, d) {
+            Phone.call(this, a, b)
+            this.c = c
+            this.d = d;
+        }
+
+        See.prototype = new Phone();
+        See.prototype.constructor = See;
+
+        See.prototype.res = function() {
+            console.log('可以拍照');
+        }
+        See.prototype.play = function() {
+            console.log('玩游戏');
+        }
+        const aaa = new See('玩具', 6666, '白色', '5.6');
+        console.log(aaa);
+    </script>
+
+    <script>
+        // function Phone (a, b) {
+        //     this.a = a;
+        //     this.b = b;
+        // }
+        // Phone.prototype.call = function() {
+        //     console.log('打电话');
+        // }
+
+        // function See ( a, b, c, d) {
+        //     Phone.call(this, a, b)
+        //     this.c = c
+        //     this.d = d;
+        // }
+
+        // See.prototype = new Phone();
+        // See.prototype.constructor = See;
+
+        // See.prototype.res = function() {
+        //     console.log('可以拍照');
+        // }
+        // See.prototype.play = function() {
+        //     console.log('玩游戏');
+        // }
+        // const aaa = new See('玩具', 6666, '白色', '5.6');
+        // console.log(aaa);
+    </script>
+
+    <script>
+        // function Phone (a, b) {
+        //     this.a = a;
+        //     this.b = b;
+        // }
+        // Phone.prototype.call = function() {
+        //     console.log('打电话');
+        // }
+
+        // function See ( a, b, c, d) {
+        //     Phone.call(this, a, b)
+        //     this.c = c
+        //     this.d = d;
+        // }
+
+        // See.prototype = new Phone();
+        // See.prototype.constructor = See;
+
+        // See.prototype.res = function() {
+        //     console.log('可以拍照');
+        // }
+        // See.prototype.play = function() {
+        //     console.log('玩游戏');
+        // }
+        // const aaa = new See('玩具', 6666, '白色', '5.6');
+        // console.log(aaa);
+    </script>
+</body>
+</html>
