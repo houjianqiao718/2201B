@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <script>
+        // 数据代理: 通过一个对象代理对另一个对象中属性的操作 (读/写)
+        // 枚举：就是可循环的变量和属性
+
+        // enumerable:true，//控制属性是否可以枚举，默认值是false  
+        // writable:true，//控制属性是否可以被修改，黑人值是false
+        // configurable:true //控制属性是否可以被删除，默认值是false
+        // Object.defineProperty有三个属性，第一个是要监听的对象，第二个是属性，第三是一个对象
+        
+        let hope = '我想唱歌'
+        let person = {
+            name: "张三",
+            age: 19,
+            sex: "男"
+        }
+        Object.defineProperty(person, "hope", {
+            // value: hope,
+            // enumerable:true  // 使变量变成可循环的
+            // writable:true  // 使变量变成可修改的
+            // configurable:true  // 使变量变成可删除的
+            get: function() {
+                console.log('我读取了');
+                return hope
+            },
+            set(value) {
+                hope = value
+                console.log('我设置了', value);
+            }
+        })
+        console.log(person);
+
+
+        console.log(Object.keys(person));  // 属性名
+        console.log(Object.values(person));  // 属性值
+
+
+
+        // let obj = { y: 200 }
+        // let obj1 = { x: 100 }
+        // Object.defineProperty(obj1, 'y', {
+        //     get: function () {
+        //         return obj.y
+        //     },
+        //     set(value) {
+        //         obj.y = value
+        //     }
+        // })
+        // console.log(obj1);
+    </script>
+
+
+    <script>
+        // let hope = '我想唱歌'
+        // let person = {
+        //     name: "张三",
+        //     age: 19,
+        //     sex: "男"
+        // }
+        // Object.defineProperty(person, "hope", {
+        //     get: function() {
+        //         console.log('我读取了');
+        //         return hope
+        //     },
+        //     set(value) {
+        //         hope = value
+        //         console.log('我设置了', value);
+        //     }
+        // })
+        // console.log(person);
+
+
+        // console.log(Object.keys(person));  // 属性名
+        // console.log(Object.values(person));  // 属性值
+
+    </script>
+
+
+    <script>
+        // let hope = '我想唱歌'
+        // let person = {
+        //     name: "张三",
+        //     age: 19,
+        //     sex: "男"
+        // }
+        // Object.defineProperty(person, "hope", {
+        //     get: function() {
+        //         console.log('我读取了');
+        //         return hope
+        //     },
+        //     set(value) {
+        //         hope = value
+        //         console.log('我设置了', value);
+        //     }
+        // })
+        // console.log(person);
+
+
+        // console.log(Object.keys(person));  // 属性名
+        // console.log(Object.values(person));  // 属性值
+
+    </script>
+</body>
+
+</html>

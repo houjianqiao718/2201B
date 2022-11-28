@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--    1.Vue中的数据代理:
+                什么是数据代理？
+                    Vue中的数据代理就是通过vm对象来代理data中的对象中属性的操作.(读/写) 
+                2.Vue中数据代理的好处:
+                    更加方便的操作data中的数据
+                3.基本原理:
+                    通过object.defineProperty()把data对象中所有属性添加到vm上
+                    为每一个添加到vm上的属性，都指定一个getter/setter。
+                    在getter/setter内部去操作 (读/写) data中的对应属性
+                -->
+    <div id="app">
+
+    </div>
+
+    <script type="text/javascript">
+        let number=18
+        let person={
+            name:'Bob',
+            sex:'女'
+        }
+        // 向person对象中添加age属性
+        Object.defineProperty(person,'age',{
+            //当有人读取person 的age属性时，getter就会被调用，且返回值就是age的值
+            get(){
+                return number
+            },
+            //当有人修改person的age属性值时，setter就会被调用，且会收到修改的具体值
+            set(value){
+                number=value
+            }
+        })
+    </script>
+
+    <script>
+        // let number=18
+        // let person={
+        //     name:'Bob',
+        //     sex:'女'
+        // }
+        // // 向person对象中添加age属性
+        // Object.defineProperty(person,'age',{
+        //     get(){
+        //         return number
+        //     },
+        //     set(value){
+        //         number=value
+        //     }
+        // })
+    </script>
+
+
+    <script>
+        // let number=18
+        // let person={
+        //     name:'Bob',
+        //     sex:'女'
+        // }
+        
+        // Object.defineProperty(person,'age',{
+        //     get(){
+        //         return number
+        //     },
+        //     set(value){
+        //         number=value
+        //     }
+        // })
+    </script>
+
+</body>
+
+</html>

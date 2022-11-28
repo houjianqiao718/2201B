@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1.Vue中常用的按键别名
+            回车 => enter
+            删除工、delete(捕获“删除”和“退格“键)
+            退出 => esc
+            空格 =>space
+            换行 => tab (特殊，必须配合keydown去使用)
+            上=>up---keyup:按下键盘，等键盘抬起来才会触发
+            下=> down---keydown:按下键盘，不需要抬起来就会触发
+            左=> left
+            右=> right
+        2.Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case (短横线命名)
+        3.系统修饰键 (用法特殊) : ctrl、alt、shift、meta
+            (1).配合keyup使用: 按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发
+            (2).配合keydown使用: 正常触发事件
+        4.也可以使用keyCode去指定具体的按键 (不推荐)
+        5.自定义按键别名并绑定
+            Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
+     -->
+
+        <!--1-->
+        <!-- <div id="root">
+            <h2>欢迎学习{{name}}</h2>
+            <input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
+        </div> -->
+
+        <!-- 2 -->
+        <!-- Vue中未提供别名的按键处理 -->
+        <!-- <div id="root">
+            <h2>欢迎学习{{name}}</h2>
+            <input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
+        </div> -->
+
+        <!-- 3 -->
+        <!-- 使用keyCode指定具体的按键(不推荐) -->
+        <!-- <div id="root">
+            <h2>欢迎学习{{name}}</h2>
+            <input type="text" placeholder="按下回车提示输入" @keyup.13="showInfo">
+        </div> -->
+
+        <!-- 4 -->
+        <!-- 自定义按键别名并绑定--Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名 -->
+        <!-- <div id="root">
+            <h2>欢迎学习{{name}}</h2>
+            <input type="text" placeholder="按下回车提示输入" @keyup.huiche="showInfo">
+        </div> -->
+
+    <script>
+        // Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+        // 按下回车事件--keyup:按下键盘，等键盘抬起来才会触发
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.target.value)
+        //         }
+    
+        //     },  
+        // })
+
+        // 按键key获取方式
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+    
+        //     },  
+        // })
+
+        
+        // enter键的编码是13，那我们就可以使用13去指定按键事件
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue专栏'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+    
+        //     },  
+        // })
+
+
+        // Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
+        // Vue.config.keyCodes.huiche = 13;
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue专栏'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+    
+        //     },  
+        // })
+    </script>
+
+    <script>
+        // Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+        // 按下回车事件--keyup:按下键盘，等键盘抬起来才会触发
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+
+        // 按键key获取方式
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+
+        
+        // enter键的编码是13，那我们就可以使用13去指定按键事件
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue专栏'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+
+
+        // Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
+        // Vue.config.keyCodes.huiche = 13;
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue专栏'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+    </script>
+
+    <script>
+        // Vue.config.productionTip = false //阻止Vue在启动时生成生产提示
+        // 按下回车事件--keyup:按下键盘，等键盘抬起来才会触发
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+
+        // 按键key获取方式
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+
+        
+        // enter键的编码是13，那我们就可以使用13去指定按键事件
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue专栏'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+
+
+        // Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
+        // Vue.config.keyCodes.huiche = 13;
+        // const vm = new Vue({
+        //     el:'#root',
+        //     data:{
+        //         name:'Vue专栏'
+        //     },
+        //     methods: {
+        //         showInfo(e){
+        //             console.log(e.key,e.keyCode);
+        //             //console.log(e.target.value)
+        //         }
+
+        //     },  
+        // })
+    </script>
+</body>
+</html>
