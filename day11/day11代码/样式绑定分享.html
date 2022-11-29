@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .aaa{
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: #b56464;
+        }
+        .happy {
+            border: 4px solid red;
+            font-size: large;
+            background-color: rgba(255, 255, 0, 0.644);
+            background: linear-gradient(30deg, yellow, pink, orange, yellow);
+        }
+
+        .normal {
+            border: 4px solid brown;
+            font-weight: 500;
+            background-color: burlywood;
+            background: linear-gradient(30edg, blue, skyblue, pink, green);
+        }
+
+        .sad {
+            border: 4px gray;
+            background-color: lightgray;
+            background: linear-gradient(30deg, rgb(189, 189, 220), rgb(209, 163, 163), brown, green);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="aaa" :class="mood" @click="change">{{name}}</div>
+
+    </div>
+
+    <script>
+        // 绑定样式
+        // 1、class样式
+            // 有字符串的写法，数组和对象也可以使用
+        // 2、style
+            // 有对象写法和数组写法
+        new Vue({
+            el: "#app",
+            data: {
+                name: "张三",
+                mood: 'normal'
+            },
+            methods: {
+                change(){
+                    const arr = ['happy', 'normal', 'sad']
+                    const i = Math.floor(Math.random() * 3)
+                    this.mood = arr[i]
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>我的姓是：<input type="text" v-model="name"></div>
+        <div>我的名是：<input type="text" v-model="names"></div>
+        <p>我的姓名是：<input type="text" v-model="propName"></p>
+    </div>
+
+    <!-- 
+        计算属性的特点：
+            1. computed具有缓存性
+            2. computed是同步的, 不能进行异步操作
+            3. 数据和属性来源于data数据, 具有多对一的关系
+     -->
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: "张",
+                names: '三',
+            },
+            // 完整写法
+            // computed:{
+            //     propName:{
+            //         get(){
+            //             //getter
+            //             return this.name + '-' + this.names
+            //         },
+            //         set(value){
+            //             //setter
+            //             let arr = value.split('-')
+            //             this.name = arr[0]
+            //             this.names = arr[1]
+            //         }
+            //     }
+            // }
+
+            // 简化写法
+            computed: {
+                propName() {
+                    return this.name + '-' + this.names
+                }
+            },
+        })
+    </script>
+
+
+    <script>
+        // new Vue({
+        //     el: "#app",
+        //     data: {
+        //         name: "张",
+        //         names: '三',
+        //     },
+        //     // 完整写法
+        //     // computed:{
+        //     //     propName:{
+        //     //         get(){
+        //     //             //getter
+        //     //             return this.name + '-' + this.names
+        //     //         },
+        //     //         set(value){
+        //     //             //setter
+        //     //             let arr = value.split('-')
+        //     //             this.name = arr[0]
+        //     //             this.names = arr[1]
+        //     //         }
+        //     //     }
+        //     // }
+
+        //     // 简化写法
+        //     computed: {
+        //         propName() {
+        //             return this.name + '-' + this.names
+        //         }
+        //     },
+        // })
+    </script>
+
+    <script>
+        // new Vue({
+        //     el: "#app",
+        //     data: {
+        //         name: "张",
+        //         names: '三',
+        //     },
+        //     // 完整写法
+        //     // computed:{
+        //     //     propName:{
+        //     //         get(){
+        //     //             //getter
+        //     //             return this.name + '-' + this.names
+        //     //         },
+        //     //         set(value){
+        //     //             //setter
+        //     //             let arr = value.split('-')
+        //     //             this.name = arr[0]
+        //     //             this.names = arr[1]
+        //     //         }
+        //     //     }
+        //     // }
+
+        //     // 简化写法
+        //     computed: {
+        //         propName() {
+        //             return this.name + '-' + this.names
+        //         }
+        //     },
+        // })
+    </script>
+</body>
+</html>
