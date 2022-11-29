@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300); 
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Yanone Kaffeesatz", sans-serif !important; 
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .home {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(90deg, #ffafbd, #ffc3a0);
+        }
+
+        .container {
+            text-align: center;
+            width: 350px;
+            max-width: 100%;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app {
+            width: 350px;
+            padding: 30px 40px 20px;
+            text-align: center;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            background: #f2f2f2;
+        }
+
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title {
+            transform: rotate(3deg);
+            font-size: 21px;
+            width: 98px;
+            height: 41px;
+            line-height: 41px;
+            border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
+            color: #fff;
+            background: #fe7345;
+            user-select: none;
+        }
+
+        .img {
+            width: 80px;
+            height: 88px;
+            margin-right: 10px;
+        }
+
+        .form {
+            margin-top: 25px;
+        }
+
+        .h1 {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .form-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-input {
+            display: inline-block;
+            flex-grow: 0.65;
+            margin-right: 15px;
+        }
+
+        .input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            border-bottom: 3px dashed #fe7345;
+            padding: 5px 0 3px;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .submit-btn::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 0px;
+            width: 100%;
+            height: 95%;
+            transform: scaleY(1.1);
+            border: 1px solid #494a4b;
+            border-radius: inherit;
+            transform-origin: top;
+            background-image: url(data:image/png;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==);
+            background-color: #fe7345;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .submit-btn {
+            position: relative;
+            transform: rotate(6deg);
+            border-radius: 6px;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .span {
+            width: 40px;
+            height: 15px;
+            position: relative;
+            display: block;
+            font-size: 16px;
+            padding: 5px 8px;
+            border: 1px solid #494a4b;
+            border-radius: inherit;
+            background-color: #fff;
+        }
+
+        .todos {
+            margin-top: 40px;
+            padding: 0 10px;
+            list-style: none;
+        }
+
+        .todos-item {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: orange; */
+            margin-bottom: 4px;
+            border-radius: 4px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .close-btn {
+            font-weight: 900;
+        }
+
+        .checkbox-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-left: 10px;
+        }
+
+        .content {
+            width: 85%;
+            text-align: left;
+            margin-left: 10px;
+            font-size: 13px;
+        }
+
+        .options {
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 16px;
+        }
+
+        .item {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box
+        }
+
+        .filters {
+            display: flex;
+            align-items: center;
+        }
+
+        span {
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .clear {
+            padding: 0 0.6em;
+            border-radius: 4px;
+            transition: all 60ms ease-out;
+        }
+        .dell{
+			text-decoration: line-through;
+            /* color: #fff; */
+		}
+        .todos-item-s{
+            width: 100%;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            padding: 0 10px;
+            height: 40px;
+            font-size: 14px;
+            background-color: #fe7345;
+            cursor: pointer;
+            transform: rotateX(180deg);
+            transition: all 1s;
+            background-color: #fe7345;
+            -webkit-animation: flipInX-132cabf7 .75s ease-in-out both;
+            animation: flipInX-132cabf7 .75s ease-in-out both
+        }
+        .todos-item-s input{
+            color: #fff !important;
+            transform: rotateX(180deg);
+            transition: all .5s;
+            background-color: #fe7345 !important
+        }
+        .todos-item-s p {
+            text-decoration: line-through;
+            color: #fff;
+            transform: rotateX(180deg);
+            transition: all .5s
+        }
+
+        .orange{
+            background-color: #fe7345;
+            color: #fff;
+        }
+        .active{
+            background-color: #fe7345;
+            color: #fff;
+        }
+        .foot{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            margin-top: 30px;
+        }
+        .svg{
+            color: rgba(73,74,75,.35);
+            width: 16px;
+            height: 16px;
+        }
+        
+        .noe {
+            display: none !important
+        }
+
+        .noe1 {
+            display: none !important
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <div class="app">
+            <div class="container">
+                <!-- 头部 -->
+                <header class="heading">
+                    <div class="img" data-v-73841b6c="">
+                        <img src="https://www.todolist.cn/img/note.75134fb0.svg" />
+                    </div>
+                    <div class="title">To-Do List</div>
+                </header>
+                <!-- 中间部分 -->
+                <div class="form">
+                    <h1 class="h1">~ Today I need to ~</h1>
+                    <form class="form-wrapper">
+                        <div class="form-input">
+                            <input class="input" id="input" placeholder="Add new todo..." />
+                        </div>
+                        <div type="submit" class="submit-btn" id="submit">
+                            <span class="span">Submit</span>
+                        </div>
+                    </form>
+                </div>
+                <!-- 添加内容部分 -->
+                <ul class="todos" id="ul">
+                    <!-- <li class="todos-item todos-item-s">
+                        <div class="checkbox-btn">
+                            <input class="checkbox" type="checkbox" />
+                        </div>
+                        <div class="content">
+                            <p>乾坤未定</p>
+                        </div>
+                        <div class="close-btn">X</div>
+                    </li> -->
+                </ul>
+                <ul class="todos1" id="ul1"></ul>
+                <ul class="todos2" id="ul2"></ul>
+                <!-- 底部部分 -->
+                <footer class="options">
+                    <span class="item" id="num">0 item left</span>
+                    <div class="filters" id="filters">
+                        <span class="option active" id="all">All</span>
+                        <span class="option" id="active">Active</span>
+                        <span class="option" id="completed">Completed</span>
+                    </div>
+                    <span class="clear" id="clear">Clear completed</span>
+                </footer>
+                <div class="foot" id="footer">
+                    <svg class="svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clipboard-check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-v-132cabf7=""><path class="" fill="currentColor" d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM192 40c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm121.2 231.8l-143 141.8c-4.7 4.7-12.3 4.6-17-.1l-82.6-83.3c-4.7-4.7-4.6-12.3.1-17L99.1 285c4.7-4.7 12.3-4.6 17 .1l46 46.4 106-105.2c4.7-4.7 12.3-4.6 17 .1l28.2 28.4c4.7 4.8 4.6 12.3-.1 17z"></path></svg>
+                    <span>Congrat, you have no more tasks to do</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var input = document.getElementById("input"); // 输入框
+    var ul = document.getElementById('ul') //ul
+    var ul1 = document.getElementById('ul1') //ul1
+    var ul2 = document.getElementById('ul2') //ul2
+    var filters = document.getElementById('filters') // 获取底部内容
+    var footer = document.getElementById('footer') // 显示隐藏
+    var submit = document.getElementById('submit') // 添加按钮
+    var num = document.getElementById('num') // 数量
+    var all = document.getElementById('all') // 所有任务
+    var active = document.getElementById('active') // 未完成
+    var completed = document.getElementById('completed') // 已完成
+    var clear = document.getElementById('clear') // 清空任务
+    
+    // 添加事件
+    function addTodo() {
+        if (input.value == '') {
+            return false
+        } else {
+            var li = document.createElement('li');
+            li.innerHTML = ` 
+                            <div class="checkbox-btn">
+                                <input class="checkbox" type="checkbox" />
+                                <div class="content">
+                                    <p>${input.value}</p>
+                                </div>
+                                <div class="close-btn">X</div>
+                            </div>
+                        `
+            li.className = 'todos-item'
+            ul.appendChild(li)
+            input.value = ''
+            filters.style.display = "block";
+            filters.style.display = "flex";
+            footer.style.display = "none";
+            num.innerHTML = ul.children.length
+        }
+    }
+
+    // 回车事件
+    input.onkeyup = function (e) {
+        if (e.keyCode === 13) {
+            addTodo(); // 调用封装好的添加事件
+        }
+    }
+
+    // 添加按钮点击事件
+    submit.onclick = function () {
+        submit.style.transform = 'rotate(0deg)' // 先设置为零
+        setTimeout(function () { //一秒后定时器完成动画
+            submit.style.transition = 'transform .25s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+        }, 1000)
+        setTimeout(function () { 
+            submit.style.transform = 'rotate(8deg)' // 退回原来的样子
+        }, 100)
+        addTodo(); // 调用封装的添加事件
+    }
+
+
+    // 切换事件
+    ul.onclick = function (e) {
+        if (e.target.parentNode.className == 'checkbox-btn') {
+            e.target.parentNode.className = 'todos-item-s'
+            completed.style.display = 'block'
+            active.style.display = 'block'
+            clear.style.display = 'block'
+            var lis = document.querySelectorAll('li')
+            var nums = document.querySelectorAll('.content').length
+            if (nums == lis.length) {
+                completed.style.display = 'none'
+                active.style.display = 'none'
+                clear.style.display = 'block'
+            }
+        } else {
+            e.target.parentNode.className = 'checkbox-btn'
+            var lis = document.querySelectorAll('li')
+            for (var i = 0; i < lis.length; i++) {
+                if (lis[i].className == 'todos-item-s') {
+                    completed.style.display = 'block'
+                    active.style.display = 'block'
+                    clear.style.display = 'block'
+                    return
+                } else {
+                    completed.style.display = 'none'
+                    active.style.display = 'none'
+                    clear.style.display = 'none'
+                }
+            }
+        }
+        // 删除
+        if (e.target.className == 'close-btn') {
+            e.target.parentNode.remove()
+            num.innerHTML = ul.children.length
+        }
+    }
+
+    // 点击clear按钮删除事件
+    clear.onclick = function () {
+        var li = document.querySelectorAll('li')
+        for (var i = 0; i < li.length; i++) {
+            if (li[i].className == 'todos-item-s') {
+                li[i].remove()
+            }
+        }
+        completed.style.display = "none";
+        active.style.display = "none";
+        clear.style.display = "none";
+    }
+
+
+    // 点击已完成按钮的事件
+    completed.onclick = function () {
+        var ons = document.querySelectorAll('.noe')
+        console.log(ons);
+        for (let i = 0; i < ons.length; i++) {
+            ons[i].className = 'todos-item'
+        }
+        var show = document.querySelectorAll(".todos-item-s")
+        for (let i = 0; i < show.length; i++) {
+            show[i].className = "noe";
+            all.style.backgroundColor = ''
+            all.style.color = '#000'
+            active.style.backgroundColor = ''
+            active.style.color = '#000'
+            clear.style.backgroundColor = ''
+            clear.style.color = '#000'
+            completed.style.color = "#fff"
+            completed.style.backgroundColor = '#fe7345'
+        }
+        var flag = document.querySelectorAll(".todos-item")
+        for (let i = 0; i < flag.length; i++) {
+            flag[i].style.display = "block";
+            flag[i].className = 'todos-item'
+        }
+    }
+
+    // 点击已完成按钮触发的事件
+    active.onclick = function () {
+        var ons = document.querySelectorAll('.noe1')
+        console.log(ons);
+        for (let i = 0; i < ons.length; i++) {
+            ons[i].className = 'todos-item-s'
+        }
+        var show = document.querySelectorAll(".todos-item")
+        for (let i = 0; i < show.length; i++) {
+            show[i].className = "noe1";
+            all.style.backgroundColor = ''
+            all.style.color = '#000'
+            active.style.backgroundColor = '#fe7345'
+            active.style.color = '#fff'
+            clear.style.backgroundColor = ''
+            clear.style.color = '#000'
+            completed.style.color = "#000"
+            completed.style.backgroundColor = ''
+        }
+        var flag = document.querySelectorAll(".todos-item-s")
+        for (let i = 0; i < flag.length; i++) {
+            flag[i].style.display = "block";
+            flag[i].className = 'todos-item-s'
+        }
+    }
+
+    // 点击全部按钮事件
+    all.onclick = function () {
+        var lis = document.querySelectorAll('li')
+        // 样式清空
+        all.style.backgroundColor = '#fe7345'
+        all.style.color = '#fff'
+        active.style.backgroundColor = ''
+        active.style.color = ''
+        clear.style.backgroundColor = ''
+        clear.style.color = '#000'
+        completed.style.color = "#000"
+        completed.style.backgroundColor = ''
+        for (let i = 0; i < lis.length; i++) {
+            if (lis[i].className == 'noe') {
+                lis[i].className = 'completed'
+            }
+            if (lis[i].className == 'noe1') {
+                lis[i].className = 'todos-item-s'
+            }
+            lis[i].style.display = "block";
+
+        }
+        addTodo(); // 调用添加的事件
+    }
+
+</script>
+</html>
