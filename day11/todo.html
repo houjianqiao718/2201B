@@ -330,8 +330,6 @@
 <script>
     var input = document.getElementById("input"); // 输入框
     var ul = document.getElementById('ul') //ul
-    var ul1 = document.getElementById('ul1') //ul1
-    var ul2 = document.getElementById('ul2') //ul2
     var filters = document.getElementById('filters') // 获取底部内容
     var footer = document.getElementById('footer') // 显示隐藏
     var submit = document.getElementById('submit') // 添加按钮
@@ -423,19 +421,6 @@
         }
     }
 
-    // 点击clear按钮删除事件
-    clear.onclick = function () {
-        var li = document.querySelectorAll('li')
-        for (var i = 0; i < li.length; i++) {
-            if (li[i].className == 'todos-item-s') {
-                li[i].remove()
-            }
-        }
-        completed.style.display = "none";
-        active.style.display = "none";
-        clear.style.display = "none";
-    }
-
 
     // 点击已完成按钮的事件
     completed.onclick = function () {
@@ -512,6 +497,19 @@
 
         }
         addTodo(); // 调用添加的事件
+    }
+
+    // 点击clear按钮删除事件
+    clear.onclick = function () {
+        var li = document.querySelectorAll('li')
+        for (var i = 0; i < li.length; i++) {
+            if (li[i].className == 'todos-item-s') {
+                li[i].remove()
+            }
+        }
+        completed.style.display = "none";
+        active.style.display = "none";
+        clear.style.display = "none";
     }
 
 </script>
