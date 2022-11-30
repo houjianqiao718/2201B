@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        调用方法：Vue.set( target, key, value )
+        target：要更改的数据源(可以是对象或者数组)
+        key：要更改的具体数据
+        value ：重新赋的值
+     -->
+
+
+        <div id="app">
+            <p>msg===>{{msg}}</p>
+            <p>sex===>{{json.sex }}</p>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el:"#app",  
+                data:{
+                    json:{
+                        username:"老六",
+                        age:20
+                    },
+                    msg:"hello"
+                }
+            })
+            //vm.json.username = "李四"  修改属性可以
+            //如果对之前存在的属性username，age进行更改是可以的，因为内部通过Object.defineProperty实现了数据双向绑定，
+            // 但是对与后续新增添的属性例如sex，那么视图是没有办法渲染的
+            //  vm.json["sex"]="男"  //发现页面不会渲染sex这个属性
+            Vue.set(vm.json, "sex", "女")
+        </script>
+
+        <script>
+            // let vm = new Vue({
+            //     el:"#app",  
+            //     data:{
+            //         json:{
+            //             username:"老六",
+            //             age:20
+            //         },
+            //         msg:"hello"
+            //     }
+            // })
+            // vm.json.username = "李四"
+            // Vue.set(vm.json, "sex", "女")
+        </script>
+</body>
+</html>

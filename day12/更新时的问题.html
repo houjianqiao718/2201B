@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        直接修改数组/对象元素是无法触发视图更新的
+            vue触发视图更新的方法有如下几种：
+                1. Vue.set  可以设置对象或数组的值，通过key或数组索引，可以触发视图更新
+                    语法:
+                        Vue.set(target,propertyName/index, value)
+                    参数:  
+                        {object | Array } target  修改的数组或者对象
+                        {string | number } propertyName/index   修改的对象名或者对应的下标
+                        {any} value    修改成功的值
+                        Vue.set(app.arr,1,'qq')
+                    返回值: 
+                        设置的值
+                    用法:
+                        向响应式对象中添加一个property,并确保这个新property同样是响应式的,且触发试图更新
+                        它必须用于向响应式对象上添加新的property,因为Vue无法探测普通的新增 property
+                    数组修改
+                        Vue.set(array, indexOfItem, newValue)
+                        this.array.$set(indexOfItem, newValue)
+                    对象修改
+                        Vue.set(obj, keyOfItem, newValue)
+                        this.obj.$set(keyOfItem, newValue)
+                2. Vue.delete  删除对象或数组中元素，通过key或数组索引，可以触发视图更新
+                    语法:
+                        Vue.delete(target, key)
+                    参数: 
+                        {object | Array} target
+                        {string | number} key/index
+                    用法: 
+                        删除对象的属性
+                3. 数组对象直接修改属性，可以触发视图更新
+                    this.array[0].show = true;
+                    this.array.forEach(function(item) {
+                        item.show = true;
+                    })
+                4. splice方法修改数组，可以触发视图更新
+                    语法：
+                        splice(index,len,[item])
+                    参数: 
+                        index: 数组下标
+                        len: 替换/删除的长度
+                        item: 替换的值,删除操作的话 item为空
+                5. 数组赋值为新数组，可以触发视图更新
+                6. 用Object.assign或lodash.assign可以为对象添加响应式属性，可以触发视图更新
+                7.Vue提供了如下的数组的变异方法，可以触发视图更新
+                    push()
+                    pop()
+                    shift()
+                    unshift()
+                    splice()  
+                    sort()
+                    reverse()
+     -->
+
+    <div id="root">
+        <h1>人员列表</h1>
+        <input type="text" placeholder="请输入名字" v-model="keyWord">
+        <!-- 绑定点击事件 -->
+        <button @click="upDate">点击一下更新信息</button> 
+        <div v-for="p in persons" :key='p.id'> {{p.name}}-{{p.age}}-{{p.sex}} </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#root",
+            data: {
+                persons: [
+                    { id: '001', name: '马东梅', age: 21, sex: '女' },
+                    { id: '002', name: '马千克', age: 28, sex: '男' },
+                    { id: '003', name: '王太克', age: 17, sex: '男' },
+                    { id: '004', name: '王国庆', age: 46, sex: '男' },
+                ]
+            },
+            methods: {
+                upDate() {
+                    // 以这种对象的形式更改不了信息
+                    // this.persons[0]= { id: '001', name: '马老师', age: 30, sex: '男' }
+                    this.persons[0].name = '赵丽颖'  // 可以改
+                    this.persons[0].age = '25'  // 可以改
+                    this.persons[0].sex = '女'  // 可以改
+                }
+            }
+        })
+    </script>
+
+    <script>
+        // new Vue({
+        //     el: "#root",
+        //     data: {
+        //         persons: [
+        //             { id: '001', name: '马东梅', age: 21, sex: '女' },
+        //             { id: '002', name: '马千克', age: 28, sex: '男' },
+        //             { id: '003', name: '王太克', age: 17, sex: '男' },
+        //             { id: '004', name: '王国庆', age: 46, sex: '男' },
+        //         ]
+        //     },
+        //     methods: {
+        //         upDate() {
+        //             // this.persons[0]= { id: '001', name: '马老师', age: 30, sex: '男' }
+        //             this.persons[0].name = '赵丽颖'  // 能改
+        //             this.persons[0].age = '25'  // 能改
+        //             this.persons[0].sex = '女'  // 能改
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

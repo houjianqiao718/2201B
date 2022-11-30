@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表排序</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2>人员列表</h2>
+        <!-- 双向绑定一下 -->
+        <input type="text" placeholder="请输入名字" v-model="input">
+        <button @click="flag = 2">年龄升序</button>
+        <button @click="flag = 1">年龄降序</button>
+        <button @click="flag = 0">原顺序</button>
+
+        <ul>
+            <li v-for="(p,index) in  _persons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        //阻止vue在启动时生成生产提示
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                input: '',
+                //   0原顺序 1降序 2升序
+                flag: 0,
+                persons: [
+                    { id: '001',  name: '马冬梅', age: 20, sex: '女' },
+                    { id: '002',  name: '赵丽颖', age: 19,  sex: '女' },
+                    { id: '003', name: '周杰伦', age: 18, sex: '男' },
+                    { id: '004',  name: '王一博',  age: 23, sex: '男' }
+                ],
+            },
+
+            computed: {
+                // 这个形式是缩写，当getter函数使用
+                // 初次读取的时候会调用一下，当依赖的数据发生变化时也会调用一下
+                _persons() {
+                    // 把这个地方的return取消
+                    const arr = this.persons.filter((item) => {
+                        // 这个return是filter规定的
+                        return item.name.indexOf(this.input) !== -1
+                    })
+
+                    if (this.flag) {
+                        // 运行到这里说明不是0
+                        arr.sort((a, b) => {
+                            // 三元表达式
+                            return this.flag === 1 ? b.age - a.age : a.age - b.age
+                        })
+                    }
+                    //当 this.flag === 0时，会直接跳过if来到这里（原始数据不会改变，所以就是原顺序)
+                    return arr
+                }
+            }
+        })
+    </script>
+
+    <script>
+        // new Vue({
+        //     el: '#app',
+        //     data: {
+        //         input: '',
+        //         //   0原顺序 1降序 2升序
+        //         flag: 0,
+        //         persons: [
+        //             { id: '001',  name: '马冬梅', age: 20, sex: '女' },
+        //             { id: '002',  name: '赵丽颖', age: 19,  sex: '女' },
+        //             { id: '003', name: '周杰伦', age: 18, sex: '男' },
+        //             { id: '004',  name: '王一博',  age: 23, sex: '男' }
+        //         ],
+        //     },
+
+        //     computed: {
+        //         _persons() {
+        //             const arr = this.persons.filter((item) => {
+        //                 return item.name.indexOf(this.input) !== -1
+        //             })
+
+        //             if (this.flag) {
+        //                 arr.sort((a, b) => {
+        //                     // 三元表达式
+        //                     return this.flag === 1 ? b.age - a.age : a.age - b.age
+        //                 })
+        //             }
+        //             return arr
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+
+</html>
