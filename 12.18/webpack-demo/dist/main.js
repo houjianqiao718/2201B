@@ -1,0 +1,1 @@
+updateDom("app","index.html");
