@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>点标记锚点</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+
+    <style>
+        html,
+        body,
+        #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .amap-marker-label {
+            border: 1px solid #53c4f7;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=22821eaf97740fa1927df437932d2ccc"></script>
+    <script type="text/javascript">
+        // 创建地图实例
+        var map = new AMap.Map("container", {
+            zoom: 13,
+            center: [116.473195, 39.973253],
+            resizeEnable: true,
+            mapStyle: 'amap://styles/whitesmoke'
+        });
+        var positions = [
+            [116.493195, 39.993253],
+            [116.473195, 39.993253],
+            [116.453195, 39.993253],
+            [116.493195, 39.973253],
+            [116.473195, 39.973253],
+            [116.453195, 39.973253],
+            [116.493195, 39.953253],
+            [116.473195, 39.953253],
+            [116.453195, 39.953253]
+        ];
+        var anchor = [
+            'bottom-left',
+            'bottom-center',
+            'bottom-right',
+            'middle-left',
+            'center',
+            'middle-right',
+            'top-left',
+            'top-center',
+            'top-right'
+        ]
+        var pos_icon = [];
+        var pos_marker = [];
+        var icon = [];
+        var marker = [];
+        for (var i = 0; i < positions.length; i++) {
+            // 创建一个 Icon
+            pos_icon[i] = new AMap.Icon({
+                // 图标尺寸
+                size: new AMap.Size(12, 12),
+                // 图标的取图地址
+                image: '//a.amap.com/jsapi_demos/static/demo-center/marker/marker.png',
+                // 图标所用图片大小
+                imageSize: new AMap.Size(12, 12),
+            });
+            var labelContent = "<div class='labelContent'>anchor:" + anchor[i] + "</div>"
+
+            // 将 Icon 传入 marker
+            pos_marker[i] = new AMap.Marker({
+                position: positions[i],
+                icon: pos_icon[i],
+                anchor: 'center', //设置锚点
+                offset: new AMap.Pixel(0, 0) //设置偏移量
+            });
+            map.add(pos_marker[i]);
+
+            // 创建一个 Icon
+            var imageUrl = '//a.amap.com/jsapi_demos/static/demo-center/marker/icon.png'
+
+
+            icon[i] = new AMap.Icon({
+                // 图标尺寸
+                size: new AMap.Size(46, 28),
+                // 图标的取图地址
+                image: imageUrl,
+                // 图标所用图片大小
+                imageSize: new AMap.Size(46, 28),
+            });
+            // 将 Icon 传入 marker
+            var labelOffset = new AMap.Pixel(0, -5);
+            marker[i] = new AMap.Marker({
+                position: positions[i],
+                icon: icon[i],
+                anchor: anchor[i], //设置锚点
+                offset: new AMap.Pixel(0, 0), //设置偏移量
+                label: {
+                    direction: 'top',
+                    content: labelContent,
+                    offset: labelOffset,
+                }
+            });
+            map.add(marker[i]);
+        }
+    </script>
+</body>
+
+</html>
