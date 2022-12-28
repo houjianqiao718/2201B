@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object构造函数模式</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 所谓 Object 构造函数就是将 Object 作为构造函数，先创建一个空的 Object 对象，再动态添加属性或者方法。
+         * 适用场景： 起始时不确定对象内部数据。
+         * 问题： 语句太多。
+         */
+        
+        //创建 Object 对象
+        var p = new Object()
+
+        //动态添加属性和方法
+        p.name = 'Tom'
+        p.age = 18
+        p.setName = function (name) {
+            this.name = name
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象字面量模式</title>
+</head>
+
+<body>
+    <script>
+        /**这是日常中最常用到的方法，使用 {} 创建对象，同时指定属性和方法。
+         * 适用场景： 起始时对象内部数据是确定的。
+         * 问题： 创建多个对象时，会产生重复代码。
+         * */
+
+        var p = {
+            name: 'Tom',
+            age: 18,
+            setName: function (name) {
+                this.name = name
+            }
+        }
+    </script>
+</body>
+
+</html>

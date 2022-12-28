@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //1.原始模式，对象字面量方式
+var person = {
+    name: '李四',
+    age: 18,
+    sayName: function() {
+		console.log(this.name)
+    }
+};
+ 
+//原始模式，Object构造函数方式
+var person = new Object()
+person.name = '张三'
+person.age = 18
+person.sayName = function () {
+    console.log(this.name)
+};
+
+//2.工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题，即怎样知道一个对象的类型（上例中我们用 instanceof 只可识别对象person1为Object）。
+//另外，使用工厂模式，每次创建对象时都要创建一个独立的对象，代码臃肿。
+function factoryPerson(name, age) {
+    var person = new Object();
+    person.name = name;
+    person.age = age;
+    person.sayName = function() {
+        alert(this.name)
+    };
+    return person;
+}
+var person1 = factoryPerson('wangwu', 18);
+console.log(person1 instanceof Object);//ture
+console.log(typeof(person1));//Object
+
+//3 构造函数
+//在ES6之前，JS中并没有引入类的概念，对象不是基于类创建的，而是用一种称为构造函数的特殊函数来定义对象和它们的特征。
+/**
+ * 构造函数是一种特殊的函数，主要用来初始化对象，即为对象成员变量赋初始值，它总与 new 一起使用。
+我们可以把对象中一些公共的属性和方法抽取出来，然后封装到这个函数里面。
+在 JS 中，使用构造函数时要注意以下两点：
+构造函数用于创建某一类对象，其首字母要大写
+构造函数要和 new 一起使用才有意义
+ * **/
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.sayName = function() {
+    alert(this.name);
+  };
+}
+// 3.1 new关键字
+// new 在执行时会做四件事情：
+// 在内存中创建一个新的空对象。
+// 让 this 指向这个新的对象。
+// 执行构造函数里面的代码，给这个新对象添加属性和方法。
+// 返回这个新对象（所以构造函数里面不需要 return ）。
+var person1 = new Person('Linqi',18)
+console.log(person1 instanceof Object)//true
+console.log(person1 instanceof Person)//true
+console.log(typeof(person1));//Object
+ 
+Person('666', 18)
+console.log(window.name);//Linqi
+
+// 3.2 静态成员和实例成员
+// 构造函数中的属性和方法我们称为成员, 成员可以添加。
+// 1. 实例成员：
+// 实例成员就是构造函数内部通过this添加的成员，如上例代码中 name、age、sayName就是实例成员。
+// 实例成员只能通过实例化的对象来访问；
+// 2. 静态成员：
+// 静态成员是在构造函数本身上添加的成员，如上例代码中的sex就是静态成员；
+// 静态成员只能通过构造函数来访问。​​​​​​​
+console.log(Person.age)//undefine，不可以用构造函数访问实例成员
+ 
+Person.sex = 'fale'//定义静态成员
+console.log(Person.sex)//fale，可以用构造函数访问静态成员
+console.log(person1.sex)//undefine，不可以用实例访问静态成员
+
+
+
+// 4 构造函数+原型
+var person1 = new Person('肖战',30)
+var person2 = new Person('王一博',24)
+Person.prototype.sayName = function() {
+  this.sayName = function() {
+    alert(this.name);
+  };
+}
+var person1 = new Person('老六', 18)
+console.log(person1)
+/*打印内容：
+* age: 18
+* name: "Linqi"
+* __proto__:{
+*   hobbies: (2) ["sleep", "weibo"]
+*   sayName: ƒ ()
+*   constructor: ƒ Person(name, age)
+*   __proto__: Object
+* }
+*/
+ 
+Person.prototype.hobbies = ['sleep', 'weibo']
+console.log(person1.__proto__)
+/*打印内容：
+* hobbies: (2) ["sleep", "weibo"]
+* sayName: ƒ ()
+* constructor: ƒ Person(name, age)
+* __proto__: Object
+*/
+// 类
+class Person {
+  constructor(name,age) {   // constructor 构造器或者构造函数
+      this.name = name;
+      this.age = age;
+    }
+   sayName() {
+      console.log(this.name);
+   }
+}    
+var person1 = new Person('老八', 18)
+</script>
+</html>
