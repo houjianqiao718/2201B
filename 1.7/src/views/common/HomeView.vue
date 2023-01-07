@@ -37,12 +37,14 @@ import * as TS from '@/api/defind'
 import { User, Lock } from '@element-plus/icons-vue'
 import { login } from '@/api/login'
 import Status from '@/Status/index'
+import { setToken } from '@/Utils/auth'
+import { ElNotification } from 'element-plus'
 const router = useRouter()
 
 /*校验账号密码*/
 const ruleForm = reactive<TS.LoginForm>({
-  mobile: '',
-  password: ''
+  mobile: '13800000002',
+  password: '123456'
 })
 
 /*表单验证*/
@@ -70,8 +72,13 @@ const submitForm = () => {
   login(ruleForm).then((res) => {
     console.log(res)
     if (res.status == Status.SUCCESS) {
-      localStorage.setItem('token', res.data.data) // 存储token
+      setToken(res.data.data) // 存储token
       router.replace('/Homepage') // 跳转页面
+      ElNotification({
+        title: '登录成功',
+        message: res.data.message,
+        type: 'success'
+      })
     }
   })
 }

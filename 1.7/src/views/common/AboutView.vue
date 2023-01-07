@@ -4,7 +4,7 @@
       <!-- 侧边栏 -->
       <el-aside :width="isCollapse ? '50px' : '180px'">
         <el-menu
-          active-text-color="#fff"
+          active-text-color="#4474fa"
           background-color="#4a7afb"
           class="menu"
           default-active="1"
@@ -100,7 +100,7 @@
             <!-- 下拉框 -->
             <el-dropdown>
               <span class="span">
-                <div class="img"><img src="@/assets/logo.png" alt="" /></div>
+                <div class="img"><img src="@/assets/Apple.png" alt="" /></div>
                 管理员
                 <el-icon>
                   <arrow-down />
@@ -252,20 +252,27 @@ const color1 = ref('#409EFF')
     align-items: center;
     .img {
       width: 25px;
-      height: 20px;
+      height: 25px;
       border: 3px solid #fff;
       border-radius: 30px;
       margin-right: 6px;
       position: relative;
       overflow: hidden;
       img {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 38px;
         position: absolute;
-        top: 3px;
-        left: -0px;
+        top: -7px;
+        left: -9px;
       }
     }
   }
+}
+.el-menu-item.is-active{
+  background-color: #fff;
+}
+.el-menu-item:hover{
+  background-color: #fff !important;
+  color: #4474fa !important;
 }
 </style>

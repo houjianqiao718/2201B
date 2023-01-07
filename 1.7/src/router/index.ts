@@ -68,6 +68,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/Nine/Security.vue')
       },
       {
+        path: '/Sechistory',
+        name: 'Sechistory',
+        component: () => import('../views/Nine/Sechistory.vue')
+      },
+      {
+        path: '/SecMonreport',
+        name: 'SecMonreport',
+        component: () => import('../views/Nine/SecMonreport.vue')
+      },
+      {
         path: '/Secdetail',
         name: 'Secdetail',
         component: () => import('../views/Nine/Secdetail.vue')

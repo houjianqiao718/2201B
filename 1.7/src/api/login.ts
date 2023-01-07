@@ -1,4 +1,4 @@
-/*封装接口*/
+/*封装登录接口*/
 import { http, apis } from '@/Utils/request'
 
 export function login(data: { mobile: string; password: string }) {

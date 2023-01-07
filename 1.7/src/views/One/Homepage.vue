@@ -6,8 +6,8 @@
         <img src="@/assets/touxiang.png" alt="" />
       </div>
       <div class="right">
-        <h3>早安，没落容克贵族，祝您开心每一天！</h3>
-        <span>没落容克贵族 | 传智播客-总裁办</span>
+        <h3>早安，{{ username }}，祝您开心每一天！</h3>
+        <span>{{ username }} | 传智播客-总裁办</span>
       </div>
     </div>
     <!-- 中间部分 -->
@@ -36,11 +36,29 @@ import Notice from './Notice.vue'
 import process from './process.vue'
 import navigation from './navigation.vue'
 import Helplink from './Helplink.vue'
-components: {calendar}
-components: {Notice}
-components: {process}
-components: {navigation}
-components: {Helplink}
+import { ref, reactive, toRefs } from 'vue'
+import { getUsername } from '@/api/Homepage'
+components: {
+  calendar
+}
+components: {
+  Notice
+}
+components: {
+  process
+}
+components: {
+  navigation
+}
+components: {
+  Helplink
+}
+/*发起请求*/
+const username = ref<string>('没落容克贵族')
+getUsername().then((res) => {
+  console.log(res)
+  username.value = res.data.data.username
+})
 </script>
 
 <style lang="scss" scoped>
@@ -70,14 +88,14 @@ components: {Helplink}
     }
   }
 }
-.con{
+.con {
   display: flex;
   justify-content: space-between;
   margin: 0 10px;
-  .con-left{
+  .con-left {
     width: 54%;
   }
-  .con-right{
+  .con-right {
     width: 45%;
   }
 }

@@ -1,4 +1,4 @@
-/*封装接口*/
+/*封装权限接口*/
 import { http, apis } from '@/Utils/request'
 
 export function permission() {
@@ -7,4 +7,3 @@ export function permission() {
     method: 'get'
   })
 }
-// 获取权限列表

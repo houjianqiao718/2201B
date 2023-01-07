@@ -52,7 +52,13 @@
       </el-table-column>
       <el-table-column label="操作">
         <template #default="scope">
-          <el-button link type="primary" size="small" @click="dialogVisible = true">添加权限点</el-button>
+          <el-button
+            link
+            type="primary"
+            size="small"
+            @click="dialogVisible = true"
+            >添加权限点</el-button
+          >
           <el-button link type="primary" size="small">查看api权限</el-button>
           <el-button link type="primary" size="small">查看</el-button>
           <el-button link type="primary" size="small">删除</el-button>
@@ -102,88 +108,33 @@ import { FolderOpened } from '@element-plus/icons-vue'
 import Addmenu from './Addmenu.vue'
 import { ref, reactive } from 'vue'
 import * as TS from '@/api/defind'
-import { User } from '@/api/defind';
+import { User } from '@/api/defind'
 import { permission } from '@/api/permission'
-const dialogVisible = ref(false)  //控制弹出框
-const value1 = ref(true)  // 控制开关
+const dialogVisible = ref(false) //控制弹出框
+const value1 = ref(true) // 控制开关
 components: {
   Addmenu
 }
 // 表单数据
-const form = reactive<TS.Form>({
-  name: '',
+const form = reactive<TS.User>({
   code: '',
-  description: ''
+  description: '',
+  enVisible: '',
+  id: '',
+  name: '',
+  pid: '',
+  type: 1
 })
 
 /**表格数据*/
-const tableData: User[] = [
-  {
-    name: 'SAAS企业管理',
-    code: 'saas-clients',
-    description: '用户管理菜单'
-  },
-  {
-    name: '员工管理',
-    code: 'employees',
-    description: '用户管理菜单'
-  },
-  {
-    name: '组织架构',
-    code: 'departments',
-    description: '组织架构菜单'
-  },
-  {
-    name: '公司设置',
-    code: 'settings',
-    description: '公司设置菜单'
-  },
-  {
-    name: '权限管理',
-    code: 'permissions',
-    description: '权限菜单'
-  },
-  {
-    name: '社保',
-    code: 'saaaa',
-    description: '社保菜单aaaa'
-  },
-  {
-    name: '考勤',
-    code: 'attendances',
-    description: '考勤'
-  },
-  {
-    name: '工资',
-    code: 'salarys',
-    description: '工资模块'
-  },
-  {
-    name: '员工自助',
-    code: 'user12345',
-    description: '员工自助'
-  },
-  {
-    name: '审批',
-    code: 'approvals',
-    description: '审批'
-  },
-  {
-    name: 'aaaa',
-    code: 'bbbb',
-    description: 'cccc'
-  },
-  {
-    name: '123',
-    code: '123',
-    description: '123'
-  }
-]
+const tableData = reactive<TS.User[]>([])
 
 /*请求数据*/
-permission().then((res)=> {
-  console.log(res);
-
+permission().then((res) => {
+  console.log(res)
+  res.data.data.forEach((item: User) => {
+    tableData.push(item)
+  })
 })
 </script>
 
