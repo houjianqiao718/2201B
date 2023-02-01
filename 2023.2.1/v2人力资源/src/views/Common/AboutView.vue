@@ -15,27 +15,6 @@
           <el-menu-item index="/userIndex">
             <span><i class="el-icon-orange"></i>首页</span>
           </el-menu-item>
-          <el-menu-item index="/StaffIn">
-            <span><i class="el-icon-user"></i>员工</span>
-          </el-menu-item>
-          <el-menu-item index="/Setup">
-            <span><i class="el-icon-s-tools"></i>设置</span>
-          </el-menu-item>
-          <el-menu-item index="/Permission">
-            <span><i class="el-icon-lock"></i>权限管理</span>
-          </el-menu-item>
-          <el-menu-item index="/Security">
-            <span><i class="el-icon-s-grid"></i>社保</span>
-          </el-menu-item>
-          <el-menu-item index="/Approval">
-            <span><i class="el-icon-printer"></i>审批</span>
-          </el-menu-item>
-          <el-menu-item index="/Attendance">
-            <span><i class="el-icon-date"></i>考勤</span>
-          </el-menu-item>
-          <el-menu-item index="/Wages">
-            <span><i class="el-icon-guide"></i>工资</span>
-          </el-menu-item>
           <el-menu-item index="/Structure">
             <span><i class="el-icon-bicycle"></i>组织架构</span>
           </el-menu-item>
@@ -50,6 +29,18 @@
               <div class="tit">江苏传智博客教育科技股份有限公司 <span>体验版</span></div>
             </div>
             <div class="right">
+              <!-- 搜索 -->
+              <div class="search">
+                <i class="el-icon-search"></i>
+              </div>
+              <!-- 全屏 -->
+              <div class="full">
+                <i class="el-icon-rank" @click="fullScreen"></i>
+              </div>
+              <!-- 颜色选择器 -->
+              <div class="block">
+                <el-color-picker v-model="color1"></el-color-picker>
+              </div>
               <div>
                 <img src="@/assets/Apple.png" alt="" />
                 <el-dropdown>
@@ -68,6 +59,13 @@
         </el-header>
         <!-- 右边头部导航条 -->
         <el-main>
+          <ul class="list">
+            <li v-for="(item, index) in list" :key="index" @click="$router.push(item.val)">
+              <span></span>
+              <span class="span">{{ item.title }}</span>
+              <span class="del" @click="del(index)">x</span>
+            </li>
+          </ul>
           <!-- 容器-坑 -->
           <router-view />
         </el-main>
@@ -79,13 +77,16 @@
 <script>
 import { removeToken } from "@/Untils/auth"
 import { getUsername } from "@/api/Homepage"
+import screenfull from "screenfull" // 引入全屏插件
 
 export default {
   data() {
     return {
       i: false,
       isCollapse: false,
-      username: "管理员"
+      list: [],
+      username: "管理员",
+      color1: ""
     }
   },
   methods: {
@@ -93,6 +94,12 @@ export default {
     loginOut() {
       removeToken() //清除token
       this.$router.replace("/") // 跳转页面
+    },
+    // 全屏
+    fullScreen() {
+      if (screenfull.isEnabled && !screenfull.isFullscreen) {
+        screenfull.request()
+      }
     }
   },
   created() {
@@ -111,6 +118,36 @@ export default {
 }
 .el-dropdown {
   color: #fff;
+}
+.list {
+  margin: 0;
+  background-color: #ffffff;
+  display: flex;
+  padding: 10px;
+  li {
+    list-style: none;
+    background-color: #409eff;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+    align-items: center;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 14px;
+    span:nth-child(1) {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+    .span {
+      margin-left: 6px;
+    }
+    .del {
+      margin-left: 10px;
+    }
+  }
 }
 .about,
 .el-container {
@@ -220,6 +257,17 @@ export default {
   justify-content: space-between;
   align-items: center;
   color: #fff;
+  .search {
+    margin-right: 20px;
+    font-size: 20px;
+  }
+  .full {
+    margin-right: 20px;
+    font-size: 22px;
+  }
+  .block {
+    margin-right: 20px;
+  }
   div {
     display: flex;
     align-items: center;

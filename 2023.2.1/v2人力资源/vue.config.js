@@ -1,5 +1,5 @@
 const { defineConfig } = require("@vue/cli-service")
-let target = process.env.VUE_APP_MOCK_ENABLE == "false" ? "http://ihrm-java.itheima.net/api" : "http://localhost:8081"
+let target = process.env.VUE_APP_MOCK_ENABLE == "false" ? "http://ihrm.itheima.net/prod-api" : "http://localhost:8081"
 module.exports = defineConfig({
   /** 保存的时候不校验*/
   lintOnSave: false,

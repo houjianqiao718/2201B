@@ -81,18 +81,12 @@
               <button @click="$router.push('/Myinfor')">我的信息</button>
             </div>
           </el-card>
-          <!-- 快速开始/便捷导航 -->
+          <!-- 绩效指数 -->
           <el-card class="box-card">
             <div class="card-header">
-              <span class="right-top">快速开始/便捷导航</span>
+              <span class="right-top">绩效指数</span>
             </div>
-            <div class="top-btn">
-              <button>人事月报</button>
-              <button>考勤查询</button>
-              <button>考勤统计</button>
-              <button>员工审核</button>
-              <button>组织架构</button>
-            </div>
+            <div class="top-btn" id="main"></div>
           </el-card>
           <!-- 帮助链接 -->
           <el-card class="box-card">
@@ -120,6 +114,7 @@
 import Overtime from "./Overtime.vue"
 import leavetake from "./leavetake.vue"
 import { getUsername } from "@/api/Homepage"
+import * as echarts from "echarts"
 
 export default {
   data() {
@@ -137,11 +132,55 @@ export default {
       this.username = res.data.data.username
     })
   },
+  mounted() {
+    var chartDom = document.getElementById("main")
+    var myChart = echarts.init(chartDom)
+    var option
+
+    option = {
+      title: {
+        text: "人力资源基础绩效表"
+      },
+      radar: {
+        // shape: 'circle',
+        indicator: [
+          { name: "考勤", max: 6500 },
+          { name: "工资", max: 16000 },
+          { name: "社保", max: 30000 },
+          { name: "工作效率", max: 46000 },
+          { name: "知识分享", max: 56000 },
+          { name: "代码行数", max: 36000 }
+        ]
+      },
+      series: [
+        {
+          name: "Budget vs spending",
+          type: "radar",
+          data: [
+            {
+              value: [4200, 3000, 20000, 35000, 50000, 18000],
+              name: "Allocated Budget"
+            },
+            {
+              value: [5000, 14000, 28000, 26000, 42000, 21000],
+              name: "Actual Spending"
+            }
+          ]
+        }
+      ]
+    }
+
+    option && myChart.setOption(option)
+  },
   components: { Overtime, leavetake }
 }
 </script>
 
 <style lang="scss" scoped>
+#main {
+  width: 600px;
+  height: 450px;
+}
 .box-card {
   margin-top: 10px;
   font-size: 14px;

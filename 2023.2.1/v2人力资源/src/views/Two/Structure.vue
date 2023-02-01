@@ -24,28 +24,27 @@
           </div>
         </div>
         <!-- 渲染 -->
-        <ul v-for="item in StrucTure" :key="item.id">
-          <li class="list-bottom" v-if="item.pid == ''">
-            <div>
-              <i class="el-icon-s-custom"></i>
-              <span class="span1">{{ item.name }}</span>
+        <el-tree :data="tranListToTreeData(this.StrucTure, '')" :props="defaultProps">
+          <span class="custom-tree-node" slot-scope="{ node, data }">
+            <div
+              class="node-data"
+              style="width: 100%; display: flex; justify-content: space-between; align-items: center"
+            >
+              <span>{{ node.label }}</span>
+              <span style="display: inline-block; text-align: right">
+                <el-button type="text"> {{ data.manager }} </el-button>
+                <el-dropdown>
+                  <el-button type="text"> 操作<i class="el-icon-arrow-down el-icon--right"></i> </el-button>
+                  <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item @click.native="AddDialogStatus = !AddDialogStatus">添加子部门</el-dropdown-item>
+                    <el-dropdown-item @click.native="edit(data.id)">编辑部门</el-dropdown-item>
+                    <el-dropdown-item @click.native="del(data.id)">删除部门</el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </span>
             </div>
-            <div class="div">
-              <span class="span">{{ item.manager }}</span>
-              <el-dropdown>
-                <span>
-                  操作
-                  <i class="el-icon-arrow-down el-icon--right"></i>
-                </span>
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item @click.native="AddDialogStatus = !AddDialogStatus">添加子部门</el-dropdown-item>
-                  <el-dropdown-item @click.native="edit(item.id)">编辑部门</el-dropdown-item>
-                  <el-dropdown-item @click.native="del(item.id)">删除部门</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </div>
-          </li>
-        </ul>
+          </span>
+        </el-tree>
       </div>
     </div>
     <!-- 编辑弹框 -->
@@ -94,7 +93,11 @@ export default {
         manager: "",
         introduce: ""
       },
-      index: ""
+      index: "",
+      defaultProps: {
+        children: "children",
+        label: "name"
+      }
     }
   },
   created() {
@@ -106,7 +109,23 @@ export default {
       getStructure().then((res) => {
         console.log(res)
         this.StrucTure = res.data.data.depts
+        this.tranListToTreeData(this.StrucTure)
       })
+    },
+    // 树形控件
+    tranListToTreeData(list, rootValue) {
+      const arr = []
+      list.forEach((item) => {
+        if (item.pid === rootValue) {
+          // 递归调用
+          const children = this.tranListToTreeData(list, item.id)
+          if (children.length) {
+            item.children = children
+          }
+          arr.push(item)
+        }
+      })
+      return arr
     },
     // 编辑
     edit(id) {
@@ -154,6 +173,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.custom-tree-node {
+  width: 100%;
+}
+
 .Structure {
   margin: 15px;
   background-color: #fff;
@@ -181,7 +204,7 @@ export default {
       margin: 50px 120px;
 
       .div {
-        width: 160px;
+        width: 130px;
         display: flex;
         justify-content: space-between;
       }
@@ -193,10 +216,6 @@ export default {
         justify-content: space-between;
         padding-bottom: 6px;
         border-bottom: 1px solid #ccc;
-
-        .title {
-          font-weight: 900;
-        }
       }
 
       ul {
@@ -215,5 +234,9 @@ export default {
       }
     }
   }
+}
+
+.el-button--text {
+  margin-right: 18px !important;
 }
 </style>

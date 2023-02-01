@@ -47,6 +47,7 @@ export default {
         this.$message.error("账号或密码为空")
       } else {
         login(this.form).then((res) => {
+          console.log(res)
           if (res.data.code == 10000) {
             setToken(res.data.data) //存储token
             this.$router.push("/userIndex") //跳转页面

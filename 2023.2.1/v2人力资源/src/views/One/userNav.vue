@@ -13,19 +13,8 @@
         <button @click="$router.push('/Myinfor')">我的信息</button>
       </div>
     </el-card>
-    <!-- 快速开始/便捷导航 -->
-    <el-card class="box-card" style="margin-top: 10px">
-      <div class="card-header">
-        <span class="right-top">快速开始/便捷导航</span>
-      </div>
-      <div class="top-btn">
-        <button>人事月报</button>
-        <button>考勤查询</button>
-        <button>考勤统计</button>
-        <button>员工审核</button>
-        <button>组织架构</button>
-      </div>
-    </el-card>
+    <!-- 绩效指数 -->
+    <el-card style="margin-top: 10px" id="main"></el-card>
     <!-- 帮助链接 -->
     <el-card class="box-card" style="margin-top: 10px">
       <div class="card-header">
@@ -44,12 +33,56 @@
 </template>
 
 <script>
+import * as echarts from "echarts"
 export default {
   data() {
     return {
       applyStatus: false,
       leaveStatus: false
     }
+  },
+  mounted() {
+    var chartDom = document.getElementById("main")
+    var myChart = echarts.init(chartDom)
+    var option
+
+    option = {
+      title: {
+        text: "Basic Radar Chart"
+      },
+      legend: {
+        data: ["Allocated Budget", "Actual Spending"]
+      },
+      radar: {
+        // shape: 'circle',
+        indicator: [
+          { name: "Sales", max: 6500 },
+          { name: "Administration", max: 16000 },
+          { name: "Information Technology", max: 30000 },
+          { name: "Customer Support", max: 38000 },
+          { name: "Development", max: 52000 },
+          { name: "Marketing", max: 25000 }
+        ]
+      },
+      series: [
+        {
+          name: "Budget vs spending",
+          type: "radar",
+          data: [
+            {
+              value: [4200, 3000, 20000, 35000, 50000, 18000],
+              name: "Allocated Budget"
+            },
+            {
+              value: [5000, 14000, 28000, 26000, 42000, 21000],
+              name: "Actual Spending"
+            }
+          ]
+        }
+      ]
+    }
+
+    option && myChart.setOption(option)
   }
 }
 </script>
